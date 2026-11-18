@@ -530,3 +530,95 @@
  .heading-actions{grid-template-columns:1fr 1fr}
 }
 @media(prefers-reduced-motion:reduce){.message-carousel-track{transition:none!important}}
+
+
+/* Tracker header shortcuts: compact, timestamp-like, tracker page only */
+.heading-actions{gap:6px!important;align-items:center!important}
+.heading-link-button{height:30px!important;padding:0 9px!important;font-size:8px!important;letter-spacing:.045em!important;gap:5px!important;border-color:var(--line)!important;background:transparent!important}
+.heading-link-button svg{width:10px;height:10px}
+@media(max-width:900px){
+ .heading-actions{display:flex!important;flex-wrap:wrap!important;gap:6px!important}
+ .heading-link-button{height:28px!important;padding:0 8px!important;font-size:8px!important}
+}
+@media(max-width:520px){
+ .heading-actions{display:flex!important;flex-wrap:wrap!important;width:100%!important}
+ .heading-actions .heading-link-button{width:auto!important;justify-content:center!important}
+ .heading-actions .utc-clock{margin-left:auto}
+}
+
+/* Form labels stay flush-left at every breakpoint */
+.transmission-full-row .field-label,
+.transmission-full-row .field-label-title,
+.transmission-full-row .field-label-title>span:first-child{
+ text-align:left!important;
+ justify-self:stretch!important;
+ align-self:start!important;
+}
+.transmission-full-row .field-label-title{
+ width:100%!important;
+ display:flex!important;
+ flex-direction:row!important;
+ justify-content:space-between!important;
+ align-items:center!important;
+}
+.transmission-full-row .field-label input,
+.transmission-full-row .field-label textarea{justify-self:stretch!important}
+
+/* Rebuild the carousel as a centered card with controlled side previews */
+.message-carousel-stage{width:100%!important;overflow:hidden!important;padding:0 0 3px!important}
+.message-carousel-track{
+ position:relative!important;
+ display:block!important;
+ width:100%!important;
+ height:190px!important;
+ margin:0!important;
+ overflow:hidden!important;
+}
+.message-carousel-track .message-featured{
+ position:absolute!important;
+ top:0!important;
+ left:50%!important;
+ width:86%!important;
+ height:174px!important;
+ min-height:174px!important;
+ margin:0!important;
+ padding:17px 20px!important;
+ box-sizing:border-box!important;
+ display:flex!important;
+ flex-direction:column!important;
+ justify-content:space-between!important;
+ opacity:1!important;
+ transform:translateX(-50%) scale(1)!important;
+ transition:transform .5s cubic-bezier(.2,.75,.25,1),opacity .5s ease!important;
+}
+.message-carousel-track .message-featured.is-peek:first-child{
+ transform:translateX(calc(-50% - 91%)) scale(.91)!important;
+ opacity:.62!important;
+}
+.message-carousel-track .message-featured.is-peek:last-child{
+ transform:translateX(calc(-50% + 91%)) scale(.91)!important;
+ opacity:.62!important;
+}
+.message-carousel-track .message-featured.is-current{
+ z-index:2!important;
+ background:#29322e!important;
+ border:1px solid #a28a56!important;
+ box-shadow:0 4px 14px #0003!important;
+}
+.message-carousel-track .message-featured.is-current p{
+ font-size:19px!important;
+ line-height:1.5!important;
+ margin:12px 0!important;
+ text-align:left!important;
+}
+.message-carousel-track .message-featured .message-author{font-size:13px!important}
+.message-carousel-track .message-featured.is-peek p{font-size:15px!important}
+.message-carousel-dots{position:relative;z-index:3;padding-top:4px!important}
+@media(max-width:700px){
+ .message-carousel-track{height:174px!important}
+ .message-carousel-track .message-featured{width:84%!important;height:158px!important;min-height:158px!important;padding:14px!important}
+ .message-carousel-track .message-featured.is-peek:first-child{transform:translateX(calc(-50% - 94%)) scale(.88)!important}
+ .message-carousel-track .message-featured.is-peek:last-child{transform:translateX(calc(-50% + 94%)) scale(.88)!important}
+ .message-carousel-track .message-featured.is-current p{font-size:16px!important}
+ .message-carousel-track .message-featured .message-author{font-size:12px!important}
+}
