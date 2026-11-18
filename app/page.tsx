@@ -294,8 +294,14 @@ export default function Home() {
                 <form className="submission-form redesigned-form" onSubmit={submit}>
                   <div className="single-prompt"><span>YOUR QUESTION</span><p>What message would you like to send to Voyager 1?</p></div>
                   <div className="transmission-form-grid">
-                    <label className="field-label">YOUR NAME<input value={name} onChange={e => setName(e.target.value)} maxLength={40} placeholder="Name or callsign" required /></label>
-                    <label className="field-label">YOUR MESSAGE <span>{message.length}/300</span><textarea value={message} onChange={e => setMessage(e.target.value)} maxLength={300} rows={3} placeholder="Write your message…" required /></label>
+                    <label className="field-label">
+                      <span className="field-label-title">YOUR NAME</span>
+                      <input value={name} onChange={e => setName(e.target.value)} maxLength={40} placeholder="Name or callsign" required />
+                    </label>
+                    <label className="field-label">
+                      <span className="field-label-title"><span>YOUR MESSAGE</span><span className="field-count">{message.length}/300</span></span>
+                      <textarea value={message} onChange={e => setMessage(e.target.value)} maxLength={300} rows={3} placeholder="Write your message…" required />
+                    </label>
                   </div>
                   <div className="form-bottom redesigned-form-bottom">
                     <span>{cooldownUntil > now ? 'Next transmission in ' + remainingLabel(cooldownUntil - now) : 'One transmission per hour, per browser.'}</span>
