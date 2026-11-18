@@ -953,3 +953,37 @@
  .record-image-strip a:first-child{grid-column:auto}
  .record-image-strip img,.record-image-strip a:first-child img{height:190px}
 }
+
+
+/* Large, image-first Voyager photo carousel */
+.spotify-record-link{display:flex;align-items:center;gap:12px;max-width:520px;margin-top:22px;padding:14px 16px;background:#18231e;border:1px solid #49664e;color:#e8eee6;text-decoration:none}
+.spotify-record-link>span{flex:0 0 auto;color:#9bc59c;font:9px var(--mono);letter-spacing:.1em}
+.spotify-record-link strong{font-size:12px;line-height:1.45;font-weight:500;flex:1}
+.spotify-record-link svg{color:#9bc59c;flex:0 0 auto}
+.voyager-gallery-carousel{position:relative;width:100%;height:clamp(300px,48vw,590px);background:#080d0c;overflow:hidden;border:1px solid #39423b}
+.voyager-gallery-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .45s ease}
+.voyager-gallery-slide.active{opacity:1;visibility:visible}
+.voyager-gallery-slide>a{display:block;width:100%;height:100%}
+.voyager-gallery-slide img{display:block;width:100%;height:100%;object-fit:contain;background:#080d0c}
+.voyager-gallery-caption{position:absolute;left:0;right:0;bottom:0;padding:70px clamp(18px,4vw,44px) 52px;background:linear-gradient(transparent,#050908ed);pointer-events:none}
+.voyager-gallery-caption>span{font:9px var(--mono);letter-spacing:.13em;color:#d7bd7b}
+.voyager-gallery-caption h4{font-size:clamp(25px,4vw,42px);font-weight:500;letter-spacing:-.03em;margin:8px 0 4px;color:#fff}
+.voyager-gallery-caption p{font-size:12px;color:#d0d1c9;margin:0}
+.voyager-gallery-controls{position:absolute;right:clamp(14px,3vw,30px);bottom:20px;display:flex;align-items:center;gap:16px;z-index:3}
+.voyager-gallery-controls>span{font:10px var(--mono);color:#e5d6ad}
+.voyager-gallery-controls>span i{font-style:normal;color:#8c8b80;padding:0 4px}
+.voyager-gallery-controls>div{display:flex;gap:6px}
+.voyager-gallery-controls button{width:36px;height:34px;border:1px solid #777b70;background:#111a17;color:#f1e6c7;font-size:19px;cursor:pointer}
+.voyager-gallery-controls button:hover{background:#9d8044;color:#fff}
+.record-image-section .dossier-text-link{margin-top:16px}
+@media(max-width:700px){
+ .spotify-record-link{align-items:flex-start;flex-wrap:wrap}
+ .spotify-record-link strong{flex-basis:calc(100% - 125px)}
+ .voyager-gallery-carousel{height:clamp(270px,78vw,430px)}
+ .voyager-gallery-slide img{object-fit:contain}
+ .voyager-gallery-caption{padding:54px 16px 58px}
+ .voyager-gallery-caption h4{font-size:25px}
+ .voyager-gallery-caption p{font-size:11px;max-width:80%}
+ .voyager-gallery-controls{right:12px;bottom:12px;gap:8px}
+ .voyager-gallery-controls button{width:32px;height:32px}
+}
