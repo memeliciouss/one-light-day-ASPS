@@ -116,8 +116,8 @@ export default function Home() {
   );
   const nav = [
     { id: 'tracker', label: 'Mission tracker', icon: Satellite },
-    { id: 'archive', label: 'Transmission archive', icon: RadioTower },
-    { id: 'dossier', label: 'Mission dossier', icon: Activity }
+    { id: 'dossier', label: 'Mission dossier', icon: Activity },
+    { id: 'archive', label: 'Transmission archive', icon: RadioTower }
   ];
 
   const submit = async (e: FormEvent) => {
@@ -365,9 +365,84 @@ export default function Home() {
           )}
 
           {view === 'dossier' && (
-            <div className="mission-dossier">
-              <section className="panel dossier-facts">
-                <div className="panel-head"><div><span className="panel-index">01</span><h2>VOYAGER 1 · AT A GLANCE</h2></div><span className="panel-tag">APPROXIMATE VALUES</span></div>
+            <div className="mission-dossier dossier-gallery">
+              <section className="golden-record-hero">
+                <div className="golden-record-copy">
+                  <span className="dossier-kicker">THE VOYAGER GOLDEN RECORD · 1977</span>
+                  <h2>A little of Earth,<br />sent into the universe.</h2>
+                  <p>Two Voyager spacecraft carry a message from our world: sounds, music, greetings and images chosen to show what life on Earth is like.</p>
+                  <a className="dossier-external-link" href="https://science.nasa.gov/mission/voyager/voyager-golden-record-overview/" target="_blank" rel="noreferrer">EXPLORE NASA’S GOLDEN RECORD <ArrowUpRight size={13} /></a>
+                </div>
+                <a className="golden-record-art" href="https://science.nasa.gov/image-detail/voyager-gold-record-front/" target="_blank" rel="noreferrer" aria-label="View the Golden Record at NASA">
+                  <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia14/pia14113/PIA14113.jpg?crop=faces%2Cfocalpoint&fit=clip&h=552&w=981" alt="NASA illustration showing the Golden Record and where it is carried on Voyager" />
+                  <span>THE SOUNDS OF EARTH <small>NASA / JPL-CALTECH</small></span>
+                </a>
+              </section>
+
+              <section className="golden-record-intro">
+                <div className="golden-record-cover">
+                  <img src="https://images-assets.nasa.gov/image/PIA21740/PIA21740~medium.jpg" alt="Engineers installing the Golden Record cover on Voyager in 1977" loading="lazy" />
+                  <span>AN OBJECT MADE TO OUTLAST US</span>
+                </div>
+                <div className="golden-record-story">
+                  <span className="dossier-kicker">A MESSAGE IN A BOTTLE</span>
+                  <h3>Not just a record.<br />A portrait of our planet.</h3>
+                  <p>The 12-inch, gold-plated copper disc was designed as a time capsule for anyone who might find it. Its protective cover carries symbolic instructions for playing the record and locating the origin of the spacecraft.</p>
+                  <div className="record-stats">
+                    <div><strong>115</strong><span>IMAGES</span></div>
+                    <div><strong>55</strong><span>LANGUAGES</span></div>
+                    <div><strong>90 min</strong><span>OF MUSIC</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <section className="record-contents-section">
+                <div className="dossier-section-heading">
+                  <span className="dossier-kicker">WHAT DID WE SEND?</span>
+                  <h3>Sounds, sights, and greetings from Earth.</h3>
+                </div>
+                <div className="record-content-grid">
+                  <a className="record-content-card record-sounds" href="https://science.nasa.gov/mission/voyager/golden-record-contents/sounds/" target="_blank" rel="noreferrer">
+                    <img src="https://images-assets.nasa.gov/image/PIA17046/PIA17046~medium.jpg" alt="Artist's concept of Voyager travelling through interstellar space" loading="lazy" />
+                    <span className="record-card-index">01 / LISTEN</span><h4>The sounds of Earth</h4>
+                    <p>Whales, thunder, birds, footsteps, laughter and the sounds of a living planet.</p>
+                    <b>EXPLORE THE SOUNDS <ArrowUpRight size={12} /></b>
+                  </a>
+                  <a className="record-content-card record-music" href="https://science.nasa.gov/mission/voyager/golden-record-contents/music/" target="_blank" rel="noreferrer">
+                    <img src="https://images-assets.nasa.gov/image/PIA23645/PIA23645~medium.jpg" alt="Voyager spacecraft in deep space" loading="lazy" />
+                    <span className="record-card-index">02 / MUSIC</span><h4>A playlist for the universe</h4>
+                    <p>From Bach and Mozart to Chuck Berry and Indian classical music — a snapshot of music across cultures.</p>
+                    <b>EXPLORE THE MUSIC <ArrowUpRight size={12} /></b>
+                  </a>
+                  <a className="record-content-card record-greetings" href="https://science.nasa.gov/mission/voyager/golden-record-contents/greetings/" target="_blank" rel="noreferrer">
+                    <img src="https://images-assets.nasa.gov/image/PIA17464/PIA17464~medium.jpg" alt="Voyager spacecraft being prepared for its journey" loading="lazy" />
+                    <span className="record-card-index">03 / HELLO</span><h4>55 ways to say hello</h4>
+                    <p>Greetings from people on Earth, in languages from around the world — including Hindi and Bengali.</p>
+                    <b>HEAR THE GREETINGS <ArrowUpRight size={12} /></b>
+                  </a>
+                </div>
+              </section>
+
+              <section className="record-image-section">
+                <div className="dossier-section-heading">
+                  <span className="dossier-kicker">A GALLERY FROM OUR WORLD</span>
+                  <h3>Earth, as we chose to introduce it.</h3>
+                  <p>The record includes 115 images: from mathematics and biology to people, landscapes and everyday life.</p>
+                </div>
+                <div className="record-image-strip">
+                  <a href="https://science.nasa.gov/mission/voyager/golden-record-contents/images/" target="_blank" rel="noreferrer"><img src="https://images-assets.nasa.gov/image/PIA00452/PIA00452~medium.jpg" alt="The Pale Blue Dot, Earth seen from Voyager 1" loading="lazy" /><span>OUR PALE BLUE DOT</span></a>
+                  <a href="https://science.nasa.gov/mission/voyager/golden-record-contents/images/" target="_blank" rel="noreferrer"><img src="https://images-assets.nasa.gov/image/PIA01371/PIA01371~medium.jpg" alt="Jupiter as seen by Voyager 1" loading="lazy" /><span>A WORLD IN OUR NEIGHBOURHOOD</span></a>
+                  <a href="https://science.nasa.gov/mission/voyager/golden-record-contents/images/" target="_blank" rel="noreferrer"><img src="https://images-assets.nasa.gov/image/PIA01969/PIA01969~medium.jpg" alt="Saturn observed by Voyager 1" loading="lazy" /><span>WORLDS BEYOND HOME</span></a>
+                </div>
+                <a className="dossier-text-link" href="https://science.nasa.gov/mission/voyager/golden-record-contents/images/" target="_blank" rel="noreferrer">BROWSE NASA’S GOLDEN RECORD IMAGE COLLECTION <ArrowUpRight size={13} /></a>
+                <p className="record-image-note">NASA’s online gallery displays a subset of the images; some original photographs are copyright-protected.</p>
+              </section>
+
+              <section className="dossier-facts">
+                <div className="dossier-section-heading">
+                  <span className="dossier-kicker">THE SPACECRAFT CARRYING IT ALL</span>
+                  <h3>Voyager 1, at a glance.</h3>
+                </div>
                 <div className="facts-grid">
                   <Fact label="DISTANCE FROM THE SUN" value={fmt(estimatedDistance)} unit="km" note="Estimated current distance" />
                   <Fact label="ONE-WAY LIGHT TIME" value={lightHours.toFixed(2)} unit="hours" note="Signal travel time" />
@@ -376,6 +451,7 @@ export default function Home() {
                 </div>
                 <div className="facts-foot"><span>LAUNCH DATE <b>05 SEP 1977</b></span><span>INTERSTELLAR ENTRY <b>AUG 2012</b></span><span>NOT LIVE NASA TELEMETRY</span></div>
               </section>
+
               <section className="panel dossier-distance">
                 <div className="panel-head"><div><span className="panel-index">02</span><h2>HOW FAR OUT IS VOYAGER 1?</h2></div></div>
                 <div className="journey-visual">
@@ -386,12 +462,13 @@ export default function Home() {
                       {[{ name: 'Earth', au: 1 }, { name: 'Jupiter', au: 5.2 }, { name: 'Saturn', au: 9.6 }, { name: 'Uranus', au: 19.2 }, { name: 'Neptune', au: 30.1 }, { name: 'Kuiper Belt', au: 40 }].map(item =>
                         <span key={item.name} className="journey-dot-static" style={{ left: (item.au / 2000 * 100) + '%' }} title={item.name} />
                       )}
-                      <div className="journey-voyager voyager-image-marker" style={{ left: Math.min(100, voyagerAU / 2000 * 100) + '%' }}><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABGCAYAAAAzbZETAAAUG0lEQVR42u1deXxU1b3/nnPvnX1JJslkQvYNkhAgQAFlkUUQF9RiOxTBSlkatJ8iDxHE+njj9LXV98S6oFSxtgW3NmPlIbRiXTAqKmWHQAKGJSF7JjNJZp+7nPdHEoi4sSqG+f01uZNz7zm/7+/3/S3nfs4A5yn/O9M6uHSq9V4AcACUMUa7vyKIyVnLWSvL4QB1OsF+NS1xKKXsCUFQD99ztJ0UFOTuEcSAMeJvdWs536zGNLRN9kJxAQDscLlcckzNXy382f+rA4CTZV91zZrD/oRRu9/6K7LjKVraxdFpghdp2fnQ5I+/ybn08RfWggJgAFwxDX+DcGfrKeXl5QwAbh6mvd8YZzTvOupjuWNupTRcq+hGL5cTS+zMd9D1Xompc9zEwcYluapA4+3X5Vjf3udpBpzk/XLAGdP3eQOAMjs41yGwJK2UWHng4EQp1CEKaj1nLbqGJOSO4GSRp8d3v329qE6aKhPdQH1a0bzc3CGl9TvXlZc+WHVsYJmdc7kOsZjKzzMGACAEYBmZiMtPjKsdOTDNOGhA/wXrdqpv5MLNtynearmtpYVLy8uXs/oPFUcPH/A3dNQUhtr23uer89b/4s+fnQCgdD8zBsT5ZCysG4S3Hh42ae1Ow/S6qrY1OrnyRZUhfljmoKvk/Px8klBwCwmJ6qcqXrD/PjmzX6lFLe9BoNOenpUpDxxx6/yXty8WnU4on7svY6QLYcJiAJzdGAYA9kzY0m768RGOE4xyZztGZvqUkC5v3rwVf1nnWLTI5AnV/DRX25wpumtKJbXN3CkUTnj4+VfL7XY715MdMcY4QsgXPseyoK9xhDI7uA9tefzq1dVNPz2y9yObRTO1pcl3sslgzNQ1vfYPgKC16V2FSepgrTXbOqIk1xxxnwh1eEN+hwP00KHTlk8Ike1FDpXtWgshhES6r7EYAF8jM1yQHY5qBoCYLbbfa0y6f3UywfteC104LX50B7AWtYer540dUfTbdvidqn6j692edv1bm//PvacJCuA6Ze0Vbu8SlUq9SMVTco9z3mOEkKfLGONmXCGewJ/vwB4ef7rso3cAvNN9eV3n+PFd90wpGWY0aQ0mykaGfYElEU/t7HnTB+zpl2H+caal5ENCiFjp9f46Oy5uZScAIwCNVr260esPphDypyuFjrgLvQFjIICDlpeXAwykZu4JBjgxbt6jn7C24296IlK1v7M1u6WtQe9VDKP1iMyp/+zdF5/5WCq0GTXrghJEjSgRLc8UAgqOsEm33HzzX1JTU/0AaE/9EQvC5ylLl84uklorb000ROo+qUV+thHbRF/2h8vWv7g7OT6uf0BSFAsFp6IUACQAfEuL+9fJyUkOxhhPCJFiyeo5isMBWlo6XHDYi1SEAPcsnLL8vjsL73v9d9cmAMDW3fsWBBljDYyJbllmClNYt8iMMcXv9x0tKytTdaenfbq5x1+o99jtoC4XlO7UlLCuYkEBdikAcMPMmT/wBEJtpF2xrXl9XzGA8oRE470CwHhZJnrKQE5PgwJQdHpDzpgxY0YQQrb19VhwIQAwAHC5IPeKJzIhwOJb+g3ob9P2k2V1YG+gbrrbG90lh7TJarA7Ft+1bFlmv/TCICQmEMZpyBemoBCAao3myQC2xTzgDLHbwblckEunpV932B1a3tbBnv6v4kmbZrhcckleXlJRqm9UnkW93qJCvC7OjCOVXia31rRkZRexNiHHVjR4IEwcz9qiEaJXqb5MvwQA1Dx/dQ8gMQB6icsFRgB4w9GVEpPGEipf66zYsnfIwPhN8Wq28fqRqUsLUnTxPEfFihY1v2nbXhKKqpOTc63oiHhlW34BZDCuwR1EsjYKTbweAEU3dZ0CgKMkzzHewRNCpL5cnPHnY/13/TDztiZ/eCwlJGzQEhaIoCQUEfe3cZznzx8HJlDmV6xmXujwR+CVCNQagX26vxLBAOHSMmzwgiAtyQDmC6K+uROWOAO06q6pKIpCKKVQCLNc/fBUE0Y7PTEP6JYiF5jdbudaQlWTw0xq0qiZTeY5+EKixPN0iacjOLUjyDGfL6JkJnO0w+MFk0VACpJDB1uRnTsIFpsNjMnQUQq1xYyoGEWbNwAPobAlGMB1paMgHNGn22xGAJ6H+nAHlZ5T9Qso7e3tGl1i8UatuegnOlPKCr1Wv9uoUW04dKgzRIh0E1MkouIZ4nQcsq1qDMkwI+iTABCkZ+aAM6ghM7kr3ZEZVLwKKVYzeMpwuLYF7mCY+CMRhGSmUielGhlj5KE+HIjPOQa8/fbbAQBv2e12Q3L/SQe8LYfeteVxqsJJSfz2NzfmUYEiEo0So0ZGKMrg7QghGJUBMFiSktEqyfC1dmBMagJot17DUGBOMELQ86jYXQ0toWzwiP6k0e9mxJjCAMTS0DM9x+Vy+bv3fHdOnz41pbl+64NSIFACXmBgjOsIcNBDwcBkFQ7WRAAApsR4tB93o7aqFr6aDiDohskkYGDBAHg8HSAEsCTGQQPCAI6014sTnnt5a3NqRoI8bdxgL/ogFZ0vAAoATLZPNqtF9QCqgi4Y9M0hUljNM6qEIgpR9FrkZsbB19YJsC6d6U1W7PpgB2rqguDkSnRUH4AhTsE9K1dAa7HAbNSgvroNZouZ8jwgqxOe1pqkOWFv60YAv926dSs3ceJE6UoHgEy5Y4oujsssCPjdmVE50C5HDUc4jj+mUQs2nYoDxwFiJALBkAkqWwDs6xooR1E8bgjiKo6iqDALpoSJ0JksSNDpEfAFcbL6BMKBCJONPAmIBrGzLTj10AHV/mvGChQAJkyY0Oeo6JyCsMPhoACYSjT8Mt5gYG2tjQc87eH2LYMHN0RlsdofEdHpCykMIjojwD+2N6A+agCl3Vzf2YksiwUjrx6OzKwUGAwpUMIUtcfcqD/eArXBArPFgoaaRmio4gu2rP/0kV+ltd14zbBWoG9uWZ5TO7q8vBwAkDYgp46JzTAbdRoNkaXslrCKk1uL/WE6QuI1VBQZZRTwhQPweBsBwQgxGkHxoKGYf/stoCoZEqUI+v1oOekBR2RwKgViOAQxHGRWWyJRNFzd889UPb1z5yaGPtyWvqD0bvjw4UJOjiHBpDYZTjYcLxYSrC8WDhujCfu8FP6TpOxvWxCIEJKSXgQoHMZcNQFrnn8EMolCAQ9BYpAkEVABCqUQIEALTqYA1xrwvWM1mKYwxighpM+2I/gLAW7Xrl3irl1oAoBRk4p9ct3xjv7FVxmS0nIg0HSMGNWK5sodCIse+JGE+pN1ij8kUpOOQ4gpUHgOJl4HCQxRJoIxGZQRxiiBHFUqendI+yoA9DzHsV7pILHbwW1/r6LZ7w1ev/ujD7d++K8dzR9sPRggqpQTOVZDp+RvldOz0pBkjaee1k6oIYBnDAwSJDDwINASFVSEAwglhBAo0fAOAHgfMTkfOosH0M+ix5SfX58SmjkuieUPzAv9/JcLDrz7cQVjjCkhWWIdLMz8SuT0dgzr+hiJRiOf7q3KBoBeb13HPOAsvIISQkA56iWUNky8ttBNVerX4i2GLaFOz+Hnn/7j2I5gYA0AoqKcREEgEwb5dG2lAGCiIu64qqTgeF/NfC4VAACgMMagyAphikL//kblnqqhmXPLDthWJSQkZt/5o+zMqk/XVfqiEZkCVMMEUBCIvSEASN3xYx9MGmVN3rDh8bjeVBcD4BzBmH59XlrCkay8USVX/SnNlmuKiPq5LfWb/+kLhd4EQHlCZB0TIIBCURQGgEhiJLDp1ecPZ+fmTdj/yb9HLVpkT2Ksq/5wOED7GhCXbDF2+2Rzku4zbXn4OYFUrqxNTkyBP4K3tm974/ojtQ3j89NT3gcggTEehACKIoJSwRcIPT5/cv8HB0+4+pa29k5VIKK4qYqrsdmMtU6ny99r3izmAV8NKgGCtnYxPVKkPDmuYv+OIKdJQ/HAG+sZA+mf0a/cFwyvA8CDkCgAEZQKATFaU+tx/+a17fWhlY+4/hal3Ns8z7kpY9n1J9xzFy2aNv7JJ2ebepTfXZlfOZXwWSqflf50coYQMLeGyHGVRUPmCdp+JSFJ4Ds89e/Nm3vgX1u3buXDRsNbJk41QhC4/gC4sCh91uSP/LDAZq3pznzIqlV/9O3cXd0wbPiwFk9HpyRFlDRJjI4eO26UtG3b/uaJEycq3ZkScTqdMQoCgKV3TNGHNXyqZIwEkhiLO9Hev9/Lr77qmjp5tlmrS/7LBtdDc597bqewcOEPRICRjnBwmoYQzbFjgS2FhUm+MyrfnvkxxhiZPXtyNk9IMQ8OAybMzbclmd6789Yb9vbKlL531MRfbOtvJ0KGJAaO6yM0ucUXjC/IiugKsmzwh0KgnL8aAF55ZRPr2Wg3a7AJp7V8ZtvhlGK7lXzM4Siry546JKny3df9hz/ZMWTnJ5szHKvurXxoqbGaEKfCGEj35v73Agh6MZX/H6XTU6DiPOvWlYf9fjWfoGOeje81FMpCgoEoTJHE4BAA1GodyAghjDFGGGPcVraV7wZE+ZoaAwCI0zkj+rPRA+rn/2TFNo+nc3tN5QGvt7a+//33V49ctao0kZCuKv37Eh8uGgU55szRtPJy2poXXqoGgNunjU98ZdP9Pn38XZuC7bVTbrrlPvAaXXTjO79OggedF0gXp8beddd0q1otj3e75VbCqzSZWXH+7HSyb8GCP/l64sPlXMzxF8v662Q5TQJX1/O3Lk4dB9zgEQPuB5JScoQm9zGjWmN6tkv5Dgo4L6TBdsojnn12QwsA189+dlt+Z5BPOXZCTG51S7OX/2rOXq2QtbP75V5yxrg+4wEEALvjjunWSCRCXa5/NgFAaelwAeGkjLXrtxwDwCjloCjypV4DKysr4975+B1r08m2jMQkQ/+UZF0K9PLff7t87dEub7j84sOF8iRz2O0qNXiTy/XPph7eFb1JcXI06u9eKKcoMunqmtq5S7CGns4smTFjhrz2ibWNQ4sN++LMpgp/MFDVfLJz6L0rS691PL447nKMD+RCrf+XC+zZghFNjz/uCvVcmzvr2hyDR6hfvWVL5DtaEwOA+ffMTG6vF3MFHfLNZjWvM7EDJkG13+lcF75c0lZyIYtcMt9uiaihWrPG1XSqCCstFcLh2oz167cc/Y4XeOrZc+bMiZMQKgCLjkpLNVG9VvWBw/HCLtb1tgbF5/c3vheVMCktLRUojdqeebasrjeQIwotiRDV4p6KI4HLoHFGAJB9+/aFD+w7WDfyB4Pa1Fols7XRWzRseIHluutGuj/6aH/wu+y28udrWYR0pKoCQhPOaBcHRb0xpAgnL5Os43Nze+EFVzWAo3Pm3DZAo1GGtjS2zZo//+bPrFbNrocfdrV+F7TEnY/y58+3WyhldPWf/9rW23LsdrtKIEHzq2VvuHF5to0JALZvX6V72rSfVCnMH4QiZxJIA0ZdVUBmzbrOu2XLv6Vv0yPO9SHEMX48586Pz3n6+Q2fded0rGdhM2fenMxHwuylDW+3XM59me50lAHA0qXTrRRkaodPNPhD0Yas9OSdJSWhphkzXPK3UT/Qc7WetnxrOtXqm76sulQx0RDh49ov16Ln1ELIaWp67LENLY8+9vqLOp3+A40gpLS4Az98bd2Bwj/8/dOHNxxgV3enrfx3TUEEALt71qx46DnVM8+88gULd9jtqnZCza+WvX650s9Xro0xkBtuqGjZvfvw7vc/eoMKgiZZq9Hm1OzfTCeOSz7hdK4JAF37Dxf7BbGzRtZut3Mwy7akpILDZyi/qxXBheMVnvfh+yeMkB5aIgqATx2O0sRQ8/vNDfW+4aGQNHPJkls/zMrKOLJ4sTNysQM1f7bWn5sqZKqZ0Oh0OpUvs3BOpTPoNObay51+vomWHA4HdTqdbgBuh2NeU+PJtpEetzjB664e5HhgZkW/LFPlwoVrxYsVH8jZKH/x4jlxgsASVq1af7R3AOvtHWq1lPDSSxsu6+B7jrR0CpQlC+2pMi+NM+u1aV6ff2+CVdnrdG529wJMuWQAOBwO4vUeLYqPP1nldJbLuLJOuyIOB4jTCYUQggeX3z6oqcV7jSBwQbNFWxUfb6y4//6etvcXDfNCAegKvHfflmOm+o5HnnmxDVfucWOn1u1wOHh3497CkBSdZDAY5JR4ocrSz1B+vrREvu6BpaV2s5bC9uSzrsOInfX2OboZP2e8Zpgl+WqOsOHhkHwywWrc7nSuO9HlDYyAEJCz0Bf5ivqdEAB33/2jQbKcULl27VoJsYP2egEB2nNeUql9sjmqVw8mhORpVarmfgnaPf/5u5cbz5aWyNdRjyCoAk899dfmmPV/MzX94hd2W4en85qEBJ0+LcXYTtS6bcuWPdvyTYGafNkNFy2abeI4Lv2JJ9YfPN/gcoWBAADsuedKhZqawCAVTwrFKIkazPrqm2+edLC4eEa0h5rO7CCQL+mR4N57Z5aIYtKh1atXR2OWf+7esHTpHXpFieYxxgYQwqn0es2+wYNvPDRjxowv9JfImQ2qFSvm5tCIHPnd4+vre84Jjen2XBp9p618yRK7JRJQhmo1XJLRyAs6M//x8uXrj/amJdIbvWXL5hnVVMj5zf88t+9KOz7y4gNxmrpX/ffd6b5wMDcYiqYSnnfHx6f++4EHHvECpKsb2r01B0Ew5QeiuiM4/SZaTC6stUEA4L6VfzjZL0O9TVQ0n0SDstzW2HDTihWzRwCMIz2W/uijT2UjHFGWrVxWE7P+S+cNjjKHqnHz9vSM4rF3JA24IZUAwKOPrtdrNNHCRYsW7Iwp/9sBYv36vXp9bq6eB4C4OK4gEjFVdblO7BdILjEtAQC5886SAIAAytZvzHv55c05p0romHxreDDGCMrK3rw6pvzvTv4foWdVrhgZ5fgAAAAASUVORK5CYII=" alt="Voyager 1" /></div>
+                      <div className="journey-voyager voyager-image-marker" style={{ left: Math.min(100, voyagerAU / 2000 * 100) + '%' }}><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABGCAYAAAAzbZETAAAUG0lEQVR42u1deXxU1b3/nnPvnX1JJslkQvYNkhAgQAFlkUUQF9RiOxTBSlkatJ8iDxHE+njj9LXV98S6oFSxtgW3NmPlIbRiXTAqKmWHQAKGJSF7JjNJZp+7nPdHEoi4sSqG+f01uZNz7zm/7+/3/S3nfs4A5yn/O9M6uHSq9V4AcACUMUa7vyKIyVnLWSvL4QB1OsF+NS1xKKXsCUFQD99ztJ0UFOTuEcSAMeJvdWs536zGNLRN9kJxAQDscLlcckzNXy382f+rA4CTZV91zZrD/oRRu9/6K7LjKVraxdFpghdp2fnQ5I+/ybn08RfWggJgAFwxDX+DcGfrKeXl5QwAbh6mvd8YZzTvOupjuWNupTRcq+hGL5cTS+zMd9D1Xompc9zEwcYluapA4+3X5Vjf3udpBpzk/XLAGdP3eQOAMjs41yGwJK2UWHng4EQp1CEKaj1nLbqGJOSO4GSRp8d3v329qE6aKhPdQH1a0bzc3CGl9TvXlZc+WHVsYJmdc7kOsZjKzzMGACAEYBmZiMtPjKsdOTDNOGhA/wXrdqpv5MLNtynearmtpYVLy8uXs/oPFUcPH/A3dNQUhtr23uer89b/4s+fnQCgdD8zBsT5ZCysG4S3Hh42ae1Ow/S6qrY1OrnyRZUhfljmoKvk/Px8klBwCwmJ6qcqXrD/PjmzX6lFLe9BoNOenpUpDxxx6/yXty8WnU4on7svY6QLYcJiAJzdGAYA9kzY0m768RGOE4xyZztGZvqUkC5v3rwVf1nnWLTI5AnV/DRX25wpumtKJbXN3CkUTnj4+VfL7XY715MdMcY4QsgXPseyoK9xhDI7uA9tefzq1dVNPz2y9yObRTO1pcl3sslgzNQ1vfYPgKC16V2FSepgrTXbOqIk1xxxnwh1eEN+hwP00KHTlk8Ike1FDpXtWgshhES6r7EYAF8jM1yQHY5qBoCYLbbfa0y6f3UywfteC104LX50B7AWtYer540dUfTbdvidqn6j692edv1bm//PvacJCuA6Ze0Vbu8SlUq9SMVTco9z3mOEkKfLGONmXCGewJ/vwB4ef7rso3cAvNN9eV3n+PFd90wpGWY0aQ0mykaGfYElEU/t7HnTB+zpl2H+caal5ENCiFjp9f46Oy5uZScAIwCNVr260esPphDypyuFjrgLvQFjIICDlpeXAwykZu4JBjgxbt6jn7C24296IlK1v7M1u6WtQe9VDKP1iMyp/+zdF5/5WCq0GTXrghJEjSgRLc8UAgqOsEm33HzzX1JTU/0AaE/9EQvC5ylLl84uklorb000ROo+qUV+thHbRF/2h8vWv7g7OT6uf0BSFAsFp6IUACQAfEuL+9fJyUkOxhhPCJFiyeo5isMBWlo6XHDYi1SEAPcsnLL8vjsL73v9d9cmAMDW3fsWBBljDYyJbllmClNYt8iMMcXv9x0tKytTdaenfbq5x1+o99jtoC4XlO7UlLCuYkEBdikAcMPMmT/wBEJtpF2xrXl9XzGA8oRE470CwHhZJnrKQE5PgwJQdHpDzpgxbt6W2Y9z4H9Q6rU5XwAAAABJRU5ErkJggg==" alt="Voyager 1" /></div>
                     </div>
                   </div>
                   <div className="journey-caption"><span>THE SUN</span><span>VOYAGER 1 · {voyagerAU.toFixed(1)} AU</span><span>OUTWARD</span></div>
                 </div>
               </section>
+
               <section className="panel dossier-history">
                 <div className="panel-head"><div><span className="panel-index">03</span><h2>MISSION HISTORY</h2></div><span className="panel-tag">1977 — PRESENT</span></div>
                 <div className="timeline-summary"><strong>From launch to interstellar space.</strong><span>The milestones that shaped Voyager 1's journey.</span></div>
