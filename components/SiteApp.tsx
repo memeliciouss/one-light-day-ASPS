@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { FormEvent } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
@@ -42,9 +42,7 @@ function SiteApp({ initialView }: { initialView: 'tracker' | 'dossier' | 'archiv
   const [notice, setNotice] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [mobileNav, setMobileNav] = useState(false);
-  const backgroundAudioRef = useRef<HTMLAudioElement>(null);
   const [musicPlaying, setMusicPlaying] = useState(false);
-  const musicManuallyPausedRef = useRef(false);
   const [search, setSearch] = useState('');
   const [expanded, setExpanded] = useState<string[]>([]);
   const [now, setNow] = useState(Date.now());
@@ -203,40 +201,17 @@ function SiteApp({ initialView }: { initialView: 'tracker' | 'dossier' | 'archiv
     setSubmitting(false);
   };
 
-  const toggleBackgroundMusic = async () => {
-    const audio = backgroundAudioRef.current;
-    if (!audio) return;
-    if (audio.paused) {
-      musicManuallyPausedRef.current = false;
-      try {
-        await audio.play();
-        setMusicPlaying(true);
-      } catch {
-        setMusicPlaying(false);
-      }
-    } else {
-      musicManuallyPausedRef.current = true;
-      audio.pause();
-      setMusicPlaying(false);
-    }
+  const toggleBackgroundMusic = () => {
+    window.dispatchEvent(new Event('asps-toggle-background-music'));
   };
 
   useEffect(() => {
-    const audio = backgroundAudioRef.current;
-    if (!audio) return;
-    audio.volume = 0.22;
-    const startMusicAfterInteraction = () => {
-      if (musicManuallyPausedRef.current || !audio.paused) return;
-      audio.play().then(() => setMusicPlaying(true)).catch(() => setMusicPlaying(false));
+    const syncMusicState = (event: Event) => {
+      setMusicPlaying(Boolean((event as CustomEvent<boolean>).detail));
     };
-    audio.play().then(() => setMusicPlaying(true)).catch(() => setMusicPlaying(false));
-    window.addEventListener('pointerdown', startMusicAfterInteraction);
-    window.addEventListener('keydown', startMusicAfterInteraction);
-    return () => {
-      window.removeEventListener('pointerdown', startMusicAfterInteraction);
-      window.removeEventListener('keydown', startMusicAfterInteraction);
-      audio.pause();
-    };
+    window.addEventListener('asps-background-music-state', syncMusicState);
+    window.dispatchEvent(new Event('asps-background-music-state-request'));
+    return () => window.removeEventListener('asps-background-music-state', syncMusicState);
   }, []);
 
   const pageTitle = nav.find(item => item.id === view)?.label || 'Mission tracker';
@@ -257,7 +232,6 @@ function SiteApp({ initialView }: { initialView: 'tracker' | 'dossier' | 'archiv
         <button className="icon-button music-toggle" type="button" onClick={toggleBackgroundMusic} aria-label={musicPlaying ? 'Pause background music' : 'Play background music'} title={musicPlaying ? 'Pause background music' : 'Play background music'}>
           {musicPlaying ? <Volume2 size={17} /> : <VolumeX size={17} />}
         </button>
-        <audio ref={backgroundAudioRef} src="/pacesic.mp3" loop preload="auto" />
       </header>
 
       <div className="workspace redesigned-workspace">
