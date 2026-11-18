@@ -2,6 +2,15 @@ import { NextRequest,NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { isAdmin } from '@/lib/admin-auth';
 export const dynamic='force-dynamic';
+function errorMessage(error:unknown,fallback:string){
+  if(error instanceof Error)return error.message;
+  if(error&&typeof error==='object'){
+    const value=error as {message?:unknown;details?:unknown;hint?:unknown;code?:unknown};
+    const parts=[value.message,value.details,value.hint].filter((x):x is string=>typeof x==='string'&&x.length>0);
+    if(parts.length)return [typeof value.code==='string'?`[${value.code}]`:null,...parts].filter(Boolean).join(' — ');
+  }
+  return fallback;
+}
 function db(){
   const url=process.env.SUPABASE_URL||process.env.NEXT_PUBLIC_SUPABASE_URL;
   // Support both the legacy service-role key and the newer Supabase secret-key name.
@@ -17,7 +26,7 @@ export async function GET(){
     return NextResponse.json({items:data||[]});
   }catch(e){
     console.error('Admin contributions GET failed:',e);
-    return NextResponse.json({error:e instanceof Error?e.message:'Unable to load messages.'},{status:500});
+    return NextResponse.json({error:errorMessage(e,'Unable to load messages.')},{status:500});
   }
 }
 export async function DELETE(req:NextRequest){
@@ -30,6 +39,6 @@ export async function DELETE(req:NextRequest){
     return NextResponse.json({ok:true});
   }catch(e){
     console.error('Admin contributions DELETE failed:',e);
-    return NextResponse.json({error:e instanceof Error?e.message:'Unable to delete message.'},{status:500});
+    return NextResponse.json({error:errorMessage(e,'Unable to delete message.')},{status:500});
   }
 }
