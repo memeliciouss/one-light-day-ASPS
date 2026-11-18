@@ -38,6 +38,7 @@ export default function Home() {
   const [now, setNow] = useState(Date.now());
   const [activeMessageIndex, setActiveMessageIndex] = useState(0);
   const [recordImageIndex, setRecordImageIndex] = useState(0);
+  const [goldenArchiveIndex, setGoldenArchiveIndex] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center', containScroll: false, slidesToScroll: 1 });
 
   useEffect(() => {
@@ -394,9 +395,6 @@ export default function Home() {
                     <div><strong>55</strong><span>LANGUAGES</span></div>
                     <div><strong>90 min</strong><span>OF MUSIC</span></div>
                   </div>
-                  <a className="spotify-record-link" href="https://open.spotify.com/album/1DPVwnfFe2VdRCPXKzou6q" target="_blank" rel="noreferrer">
-                    <span>LISTEN ON SPOTIFY</span><strong>The Golden Record: Greetings and Sounds of the Earth <small>4-track greetings and sounds EP · NASA’s music selection is linked separately below</small></strong><ArrowUpRight size={15} />
-                  </a>
                 </div>
               </section>
 
@@ -405,12 +403,32 @@ export default function Home() {
                   <span className="dossier-kicker">THE IMAGES ON THE GOLDEN RECORD</span>
                   <h3>115 pictures.<br />One portrait of Earth.</h3>
                   <p>From human anatomy and DNA to landscapes, animals, cities and everyday life — these are the images selected to introduce our world to whoever might find Voyager.</p>
-                  <a className="dossier-external-link" href="https://science.nasa.gov/gallery/images-on-the-golden-record/" target="_blank" rel="noreferrer">EXPLORE NASA’S GOLDEN RECORD IMAGE GALLERY <ArrowUpRight size={13} /></a>
+                  <a className="dossier-external-link" href="https://science.nasa.gov/mission/voyager/golden-record-contents/images/" target="_blank" rel="noreferrer">BROWSE THE 115 IMAGES ON THE RECORD <ArrowUpRight size={13} /></a>
                 </div>
-                <a className="golden-image-feature-art" href="https://science.nasa.gov/gallery/images-on-the-golden-record/" target="_blank" rel="noreferrer">
-                  <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia14/pia14113/PIA14113.jpg?crop=faces%2Cfocalpoint&fit=clip&h=600&w=900" alt="The Voyager Golden Record and its image collection" loading="lazy" />
-                  <span>NASA’S OFFICIAL IMAGE COLLECTION</span>
-                </a>
+                <div className="golden-archive-carousel">
+                  {[
+                    { title: 'The Golden Record', credit: 'NASA / JPL-CALTECH', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-record-cover-446eb9.jpg?w=1200', alt: 'The Golden Record protective cover' },
+                    { title: 'The record on display', credit: 'NASA / JPL-CALTECH', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-gold-record-display.jpg?w=1200', alt: 'The Golden Record displayed for documentation' },
+                    { title: 'Recording the message', credit: 'NASA ARCHIVE', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-recording-session-6-29-77-30885251025-o.jpg', alt: 'Archival photograph from the Golden Record recording sessions' },
+                    { title: 'A message being recorded', credit: 'NASA ARCHIVE', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-recording-session-6-29-77-30249865513-o.jpg', alt: 'Archival photograph from the Golden Record recording sessions' },
+                    { title: 'The voices of Earth', credit: 'NASA ARCHIVE', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-recording-session-6-29-77-30796968361-o.jpg', alt: 'Archival photograph from the Golden Record recording sessions' }
+                  ].map((item, index) => (
+                    <article className={'golden-archive-slide ' + (index === goldenArchiveIndex ? 'active' : '')} key={item.title} aria-hidden={index !== goldenArchiveIndex}>
+                      <a href="https://science.nasa.gov/mission/voyager/making-of-the-golden-record/" target="_blank" rel="noreferrer" tabIndex={index === goldenArchiveIndex ? 0 : -1}>
+                        <img src={item.image} alt={item.alt} loading={index === goldenArchiveIndex ? 'eager' : 'lazy'} />
+                      </a>
+                      <div className="golden-archive-caption"><span>{item.credit}</span><strong>{item.title}</strong></div>
+                    </article>
+                  ))}
+                  <div className="golden-archive-controls">
+                    <span>{String(goldenArchiveIndex + 1).padStart(2, '0')} <i>/</i> 05</span>
+                    <div>
+                      <button type="button" onClick={() => setGoldenArchiveIndex(index => (index + 4) % 5)} aria-label="Previous Golden Record archive image">←</button>
+                      <button type="button" onClick={() => setGoldenArchiveIndex(index => (index + 1) % 5)} aria-label="Next Golden Record archive image">→</button>
+                    </div>
+                  </div>
+                </div>
+                <p className="record-image-note">The carousel shows NASA’s archival photographs of the record being made. The 115 encoded pictures are a separate collection; NASA marks those images as copyright-protected, so they remain available through its official gallery.</p>
               </section>
 
               <section className="record-contents-section">
@@ -428,8 +446,8 @@ export default function Home() {
                   <a className="record-content-card record-music" href="https://open.spotify.com/playlist/4gPhGa5PrRwjEqiMFKPyNK" target="_blank" rel="noreferrer">
                     <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia23/pia23645/PIA23645.jpg?crop=faces%2Cfocalpoint&fit=clip&h=600&w=900" alt="Voyager spacecraft in deep space" loading="lazy" />
                     <span className="record-card-index">02 / MUSIC</span><h4>A playlist for the universe</h4>
-                    <p>From Bach and Mozart to Chuck Berry and Indian classical music — a snapshot of music across cultures.</p>
-                    <b>OPEN THE GOLDEN RECORD PLAYLIST <ArrowUpRight size={12} /></b>
+                    <p>A Spotify playlist collecting the Golden Record’s musical selections — from Bach and Mozart to Chuck Berry and Indian classical music.</p>
+                    <b>LISTEN ON SPOTIFY <ArrowUpRight size={12} /></b>
                   </a>
                   <a className="record-content-card record-greetings" href="https://science.nasa.gov/mission/voyager/golden-record-contents/greetings/" target="_blank" rel="noreferrer">
                     <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia17/pia17464/PIA17464.jpg?crop=faces%2Cfocalpoint&fit=clip&h=600&w=900" alt="Voyager spacecraft being prepared for its journey" loading="lazy" />
@@ -438,7 +456,7 @@ export default function Home() {
                     <b>HEAR THE GREETINGS <ArrowUpRight size={12} /></b>
                   </a>
                   <a className="record-content-card record-images" href="https://science.nasa.gov/gallery/images-on-the-golden-record/" target="_blank" rel="noreferrer">
-                    <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia14/pia14113/PIA14113.jpg?crop=faces%2Cfocalpoint&fit=clip&h=600&w=900" alt="The Voyager Golden Record image collection" loading="lazy" />
+                    <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/v/voyager_record20171201-16-1.jpg?format=jpeg&w=1200" alt="Close-up of the Voyager Golden Record cover" loading="lazy" />
                     <span className="record-card-index">04 / EXPLORE</span><h4>115 pictures from Earth</h4>
                     <p>Explore the images chosen to introduce our planet — people, places, science and the natural world.</p>
                     <b>OPEN NASA’S IMAGE GALLERY <ArrowUpRight size={12} /></b>
@@ -471,7 +489,8 @@ export default function Home() {
                     <div><button type="button" onClick={() => setRecordImageIndex(index => (index + 3) % 4)} aria-label="Previous Voyager image">←</button><button type="button" onClick={() => setRecordImageIndex(index => (index + 1) % 4)} aria-label="Next Voyager image">→</button></div>
                   </div>
                 </div>
-                <p className="record-image-note">NASA’s online gallery displays a subset of the images; some original photographs are copyright-protected.</p>
+                <a className="dossier-text-link" href="https://science.nasa.gov/mission/voyager/images-voyager-took/" target="_blank" rel="noreferrer">EXPLORE NASA’S FULL VOYAGER IMAGE ARCHIVE <ArrowUpRight size={13} /></a>
+                <p className="record-image-note">Browse NASA’s galleries of images captured by Voyager 1 and 2, including Jupiter, Saturn and the Solar System family portrait.</p>
               </section>
 
               <section className="dossier-facts">
