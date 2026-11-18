@@ -214,8 +214,12 @@ export default function Home() {
               )}
             </div>
             <div className="heading-actions">
-              <button className="heading-link-button" onClick={() => setView('dossier')}>MISSION DOSSIER <ArrowUpRight size={13} /></button>
-              <button className="heading-link-button" onClick={() => setView('archive')}>TRANSMISSION ARCHIVE <ArrowUpRight size={13} /></button>
+              {view === 'tracker' && (
+                <>
+                  <button className="heading-link-button" onClick={() => setView('dossier')}>MISSION DOSSIER <ArrowUpRight size={11} /></button>
+                  <button className="heading-link-button" onClick={() => setView('archive')}>TRANSMISSION ARCHIVE <ArrowUpRight size={11} /></button>
+                </>
+              )}
               <span className="utc-clock">{formatIST(now, { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })} IST</span>
               <button className="square-button" onClick={loadContributions} title="Refresh transmissions"><RefreshCw size={15} /></button>
             </div>
