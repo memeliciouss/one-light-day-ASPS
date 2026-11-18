@@ -1309,3 +1309,12 @@
  .transmission-bottomline{align-items:flex-start;flex-direction:column;gap:8px}
  .transmission-stamp{align-items:flex-start;text-align:left}
 }
+
+
+/* Restore the larger gold author/callsign treatment in the archive */
+.transmission-bottomline>strong{
+  color:#e2bd70!important;
+  font:600 13px var(--display)!important;
+  letter-spacing:.015em;
+  margin:0!important;
+}
