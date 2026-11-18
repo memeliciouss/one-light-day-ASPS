@@ -25,7 +25,7 @@ function NasaVoyagerModel(){
     clone.traverse(o=>{if((o as THREE.Mesh).isMesh){const m=o as THREE.Mesh;m.castShadow=true;m.receiveShadow=true;}});
     return {model:clone,center:center.toArray() as [number,number,number],scale:5.2/maxDimension};
   },[gltf.scene]);
-  return <group scale={scale}><primitive object={model} position={[-center[0],-center[1],-center[2]]}/></group>;
+  return <group scale={scale*3.2} position={[0,0.85,0]}><primitive object={model} position={[-center[0],-center[1],-center[2]]}/></group>;
 }
 export default function VoyagerScene(){
   const [modelAvailable,setModelAvailable]=useState(false);
