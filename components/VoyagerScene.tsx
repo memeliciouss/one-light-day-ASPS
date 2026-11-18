@@ -2,21 +2,19 @@
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { useLoader, useThree } from '@react-three/fiber';
-import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 function SpaceEnvironment(){
-  const hdr=useLoader(RGBELoader,'/hdri/star_night.hdr');
+  const background=useLoader(THREE.TextureLoader,'/hdri/starmap.jpg');
   const scene=useThree(state=>state.scene);
   useEffect(()=>{
-    hdr.mapping=THREE.EquirectangularReflectionMapping;
-    scene.environment=hdr;
-    scene.background=hdr;
-    scene.environmentIntensity=0.18;
-    scene.backgroundIntensity=0.65;
-    return ()=>{scene.environment=null;scene.background=null;scene.environmentIntensity=1;scene.backgroundIntensity=1;};
-  },[hdr,scene]);
+    background.mapping=THREE.EquirectangularReflectionMapping;
+    background.colorSpace=THREE.SRGBColorSpace;
+    scene.background=background;
+    return ()=>{scene.background=null;};
+  },[background,scene]);
   return null;
 }
 
