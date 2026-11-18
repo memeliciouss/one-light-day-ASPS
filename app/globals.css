@@ -622,3 +622,25 @@
  .message-carousel-track .message-featured.is-current p{font-size:16px!important}
  .message-carousel-track .message-featured .message-author{font-size:12px!important}
 }
+
+
+/* Definitive alignment: label begins at the textarea's left edge */
+.transmission-full-row .field-label-title{
+ display:flex!important;
+ width:100%!important;
+ justify-content:flex-start!important;
+ text-align:left!important;
+}
+.transmission-full-row .field-label-title>span:first-child{
+ display:block!important;
+ margin:0 auto 0 0!important;
+ text-align:left!important;
+}
+.transmission-full-row .field-label-title>.field-count{
+ display:block!important;
+ margin-left:auto!important;
+ text-align:right!important;
+}
+.transmission-full-row .field-label{
+ text-align:left!important;
+}
