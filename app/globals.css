@@ -960,7 +960,7 @@
 .spotify-record-link>span{flex:0 0 auto;color:#9bc59c;font:9px var(--mono);letter-spacing:.1em}
 .spotify-record-link strong{font-size:12px;line-height:1.45;font-weight:500;flex:1}
 .spotify-record-link svg{color:#9bc59c;flex:0 0 auto}
-.voyager-gallery-carousel{position:relative;width:100%;height:clamp(300px,48vw,590px);background:#080d0c;overflow:hidden;border:1px solid #39423b}
+.voyager-gallery-carousel{position:relative;width:100%;height:clamp(300px,47vw,580px);background:#080d0c;overflow:hidden;border:1px solid #39423b}
 .voyager-gallery-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .45s ease}
 .voyager-gallery-slide.active{opacity:1;visibility:visible}
 .voyager-gallery-slide>a{display:block;width:100%;height:100%}
@@ -986,4 +986,23 @@
  .voyager-gallery-caption p{font-size:11px;max-width:80%}
  .voyager-gallery-controls{right:12px;bottom:12px;gap:8px}
  .voyager-gallery-controls button{width:32px;height:32px}
+}
+
+
+/* Golden Record image collection feature */
+.golden-image-feature{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px;align-items:center;padding:clamp(22px,3.2vw,38px);background:linear-gradient(115deg,#171d1b,#24251f 70%,#302819);border:1px solid #66583a;overflow:hidden}
+.golden-image-feature-copy{max-width:450px}
+.golden-image-feature-copy h3{font-size:clamp(27px,3.8vw,43px);font-weight:500;line-height:1.08;letter-spacing:-.035em;margin:0 0 12px;color:#f0eee5}
+.golden-image-feature-copy p{font-size:13px;line-height:1.75;color:#b8b9ae}
+.golden-image-feature-art{display:block;position:relative;min-width:0}
+.golden-image-feature-art img{display:block;width:100%;height:260px;object-fit:contain;filter:drop-shadow(0 14px 24px #0009)}
+.golden-image-feature-art span{display:block;text-align:right;margin-top:8px;color:#d7bd7b;font:9px var(--mono);letter-spacing:.13em}
+.record-content-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.record-content-card.record-images{border-color:#74613b;background:linear-gradient(155deg,#1e211c,#171d1b)}
+.record-content-card.record-images img{object-fit:contain;background:#111713}
+@media(max-width:900px){.record-content-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){
+ .golden-image-feature{grid-template-columns:1fr;gap:12px;padding:22px}
+ .golden-image-feature-art img{height:190px}
+ .record-content-grid{grid-template-columns:1fr}
 }
