@@ -45,6 +45,6 @@ export default function VoyagerScene(){
     <ambientLight intensity={0.55}/><directionalLight position={[4,5,5]} intensity={1.15} color="#fff0d0"/><pointLight position={[-3,-2,3]} intensity={0.35} color="#d6a94c"/>
     <SpaceEnvironment/>
     {modelAvailable&&<Suspense fallback={null}><NasaVoyagerModel/></Suspense>}
-    <OrbitControls makeDefault target={[-0.15,0.18,0]} enablePan={false} enableDamping dampingFactor={.08} minDistance={3.5} maxDistance={9} rotateSpeed={.7} zoomSpeed={.7}/>
+    <OrbitControls makeDefault target={[-0.15,0.18,0]} enablePan={false} enableDamping dampingFactor={.08} autoRotate autoRotateSpeed={0.28} minDistance={3.5} maxDistance={9} rotateSpeed={.7} zoomSpeed={.7}/>
   </Canvas>{!modelAvailable&&<div className="model-pending"><span>NASA 3D MODEL AWAITING FILE</span><b>Voyager Probe (B).glb</b><small>Add the official model to <code>public/models/</code>.</small></div>}</div>;
 }
