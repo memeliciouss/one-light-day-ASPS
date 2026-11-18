@@ -147,3 +147,41 @@
  .analogy-line{gap:6px;font-size:7px}
  .distance-footnote{padding:0 13px 14px}
 }
+
+
+/* Quiet distance progress visual */
+.distance-redesign{padding-bottom:0}
+.distance-redesign .distance-hero{grid-template-columns:1fr auto;align-items:center;padding:16px 18px;background:transparent}
+.distance-redesign .distance-hero>div:first-child>strong{font-size:clamp(23px,3vw,34px);letter-spacing:-.03em}
+.distance-redesign .distance-hero>div:first-child>strong small{font-size:12px}
+.distance-redesign .distance-light{border-left:1px solid var(--line2);padding-left:16px}
+.journey-visual{padding:20px 20px 17px}
+.journey-endpoints{display:flex;justify-content:space-between;font:9px var(--mono);letter-spacing:.08em;color:var(--muted);margin-bottom:12px}
+.journey-endpoints span:first-child{color:#e8c778}
+.journey-endpoints span:last-child{color:#b9a7d2}
+.journey-track{height:20px;position:relative;background:#554b65;border-radius:20px;margin:0 4px}
+.journey-progress{position:absolute;left:0;top:0;height:100%;background:#d9b45e;border-radius:20px 0 0 20px;min-width:2px}
+.journey-dots{position:absolute;inset:0}
+.journey-dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:7px;height:7px;padding:0;border:1px solid #d9e1df;border-radius:50%;background:#8db6c4;cursor:pointer;z-index:2}
+.journey-dot:nth-child(1){top:-7px}
+.journey-dot:nth-child(2){top:27px}
+.journey-dot:nth-child(3){top:-7px}
+.journey-dot:nth-child(4){top:27px}
+.journey-dot:nth-child(5){top:-7px}
+.journey-dot:nth-child(6){top:27px}
+.journey-dot:hover,.journey-dot:focus-visible{background:#fff;border-color:#fff;outline:3px solid #8db6c455}
+.journey-voyager{position:absolute;top:50%;transform:translate(-50%,-50%);z-index:3;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:#f1d58d;border:1px solid #fff1c5;box-shadow:0 0 0 4px #e8c77835}
+.journey-voyager span{font:700 8px var(--mono);color:#292317}
+.journey-caption{display:flex;justify-content:space-between;gap:8px;margin-top:25px;font:8px var(--mono);color:var(--dim)}
+.journey-caption span:nth-child(2){color:#e8c778;text-align:center}
+.journey-caption span:last-child{text-align:right}
+.journey-analogy{margin-top:17px;padding-top:13px;border-top:1px solid var(--line);font:11px/1.6 var(--display);color:var(--muted)}
+.journey-analogy b{color:#e8c778;font-weight:600}
+@media(max-width:700px){
+ .distance-redesign .distance-hero{grid-template-columns:1fr;gap:12px;padding:14px 13px}
+ .distance-redesign .distance-light{border-left:0;border-top:1px solid var(--line2);padding:10px 0 0}
+ .journey-visual{padding:17px 13px 14px}
+ .journey-endpoints{font-size:8px}
+ .journey-caption{font-size:7px}
+ .journey-analogy{font-size:10px}
+}
