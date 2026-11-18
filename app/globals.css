@@ -1127,3 +1127,16 @@
 @media(max-width:800px){
  .cover-decoder-points>.glyph-detail-carousel{min-height:220px}
 }
+
+
+/* Monochrome diagram carousel fills the sixth decoder card */
+.cover-decoder-points{align-items:stretch}
+.cover-decoder-points>.glyph-detail-carousel{margin:0;min-width:0;min-height:190px;padding:0;display:block;position:relative;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.glyph-detail-carousel .glyph-detail-slide{display:none;position:absolute;inset:0;min-height:0;background:#fff;overflow:hidden}
+.glyph-detail-carousel .glyph-detail-slide.active{display:block}
+.glyph-detail-carousel .glyph-detail-slide img{position:absolute;width:100%;height:100%;object-fit:contain;background:#fff;transform:scale(1.85)}
+.glyph-detail-carousel .glyph-detail-slide img.glyph-crop-play{transform-origin:22% 23%}
+.glyph-detail-carousel .glyph-detail-slide img.glyph-crop-image{transform-origin:78% 23%}
+.glyph-detail-carousel .glyph-detail-slide img.glyph-crop-pulsar{transform-origin:22% 78%}
+.glyph-detail-carousel .glyph-detail-slide img.glyph-crop-hydrogen{transform-origin:78% 78%}
+@media(max-width:800px){.cover-decoder-points>.glyph-detail-carousel{min-height:220px}}
