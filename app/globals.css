@@ -452,3 +452,35 @@
  .transmission-full-row .transmission-form-grid{grid-template-columns:1fr;gap:14px}
  .transmission-full-row .field-label input{height:50px}
 }
+
+
+/* Override earlier decorative treatments with flat, consistent surfaces */
+.message-carousel-panel,
+.message-carousel-panel .message-carousel-section,
+.message-carousel-stage,
+.message-carousel-stage .message-featured{
+  background:#191e1b!important;
+  background-image:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+  text-shadow:none!important;
+}
+.message-carousel-panel{border:1px solid #454b43!important}
+.message-carousel-stage .message-featured{border:1px solid #65604d!important;border-radius:0!important}
+.message-carousel-stage .message-featured p{color:#f0eee7!important}
+.message-carousel-stage .message-featured-top,
+.message-carousel-stage .message-featured .message-author{color:#d4b56f!important}
+.message-carousel-stage .message-featured-top svg{color:#a9c5c8!important}
+.message-carousel-dots i.active{box-shadow:none!important}
+.transmission-full-row .transmission-form-grid{display:grid!important;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr)!important;gap:22px!important;align-items:start!important}
+.transmission-full-row .field-label{display:grid!important;grid-template-rows:20px auto!important;align-content:start!important;align-items:start!important;gap:8px!important;min-width:0!important}
+.transmission-full-row .field-label-title{display:flex!important;align-items:center!important;justify-content:space-between!important;height:20px!important;min-height:20px!important;line-height:20px!important;white-space:nowrap!important}
+.transmission-full-row .field-label-title>span{display:inline!important;line-height:20px!important}
+.transmission-full-row .field-label-title .field-count{color:var(--muted)!important;font-size:10px!important}
+.transmission-full-row .field-label input,
+.transmission-full-row .field-label textarea{width:100%!important;min-width:0!important;box-sizing:border-box!important;margin:0!important;align-self:start!important}
+.transmission-full-row .field-label input{height:54px!important}
+.transmission-full-row .field-label textarea{height:90px!important;min-height:90px!important}
+@media(max-width:1059px){
+ .transmission-full-row .transmission-form-grid{grid-template-columns:1fr!important;gap:14px!important}
+}
