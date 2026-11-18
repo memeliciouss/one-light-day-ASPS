@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { FormEvent } from 'react';
 import dynamic from 'next/dynamic';
-import { Activity, ArrowUpRight, Menu, MessageCircle, RefreshCw, Satellite, Search, Send, X } from 'lucide-react';
+import { Activity, ArrowUpRight, Menu, MessageCircle, RadioTower, RefreshCw, Satellite, Search, Send, X } from 'lucide-react';
 import { Contribution } from '@/lib/prompts';
 import { supabase } from '@/lib/supabase';
 
@@ -207,6 +207,11 @@ export default function Home() {
             <div>
               <div className="eyebrow">ONE LIGHT-DAY <span>/</span> {pageTitle.toUpperCase()}</div>
               <h1>{view === 'tracker' ? 'Voyager 1' : view === 'archive' ? 'Transmissions from Earth' : 'The mission behind the signal'}</h1>
+              {view === 'tracker' && (
+                <p className="mission-intro">
+                  Launched in 1977, Voyager 1 has travelled farther than any other human-made object. On 18 November 2026, it reaches a remarkable milestone: one light-day from Earth. It still carries the Golden Record, a collection of sounds, music and greetings from our world.
+                </p>
+              )}
             </div>
             <div className="heading-actions">
               <span className="utc-clock">{formatIST(now, { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })} IST</span>
