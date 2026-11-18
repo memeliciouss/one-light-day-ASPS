@@ -366,12 +366,12 @@ export default function Home() {
                 <div className="timeline-summary"><strong>From launch to interstellar space.</strong><span>The milestones that shaped Voyager 1's journey.</span></div>
                 <div className="timeline">
                   {[
-                    { year: '1977', title: 'Launch', desc: 'Voyager 1 launched on 5 September from Cape Canaveral, beginning its journey through the outer Solar System.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Voyager_1_Launch.jpg', credit: 'NASA/JPL' },
-                    { year: '1979', title: 'Jupiter flyby', desc: 'Voyager 1 returned detailed observations of Jupiter, its atmosphere, rings and moons.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Great_Red_Spot_From_Voyager_1.jpg', credit: 'NASA/JPL' },
-                    { year: '1980', title: 'Saturn flyby', desc: 'Voyager 1 explored Saturn and its moon Titan before heading outwards from the planetary region.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/PIA01969.jpg', credit: 'NASA/JPL' },
-                    { year: '1990', title: 'The Pale Blue Dot', desc: 'Voyager 1 turned its camera back toward home and captured Earth as a tiny point of light.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pale_Blue_Dot.png', credit: 'NASA/JPL' },
-                    { year: '2012', title: 'Interstellar space', desc: 'Voyager 1 became the first human-made object to enter interstellar space.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/PIA17046_-_Voyager_1_Goes_Interstellar.jpg', credit: 'NASA/JPL-Caltech' },
-                    { year: '2026', title: 'One light-day milestone', desc: 'At approximately 25.9 billion kilometres, a radio signal takes about 24 hours to travel one way.', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Voyager.jpg', credit: 'NASA/JPL-Caltech' }
+                    { year: '1977', title: 'Launch', desc: 'Voyager 1 launched on 5 September from Cape Canaveral, beginning its journey through the outer Solar System.', image: 'https://images-assets.nasa.gov/image/PIA17464/PIA17464~medium.jpg', credit: 'NASA/JPL' },
+                    { year: '1979', title: 'Jupiter flyby', desc: 'Voyager 1 returned detailed observations of Jupiter, its atmosphere, rings and moons.', image: 'https://images-assets.nasa.gov/image/PIA01371/PIA01371~medium.jpg', credit: 'NASA/JPL' },
+                    { year: '1980', title: 'Saturn flyby', desc: 'Voyager 1 explored Saturn and its moon Titan before heading outwards from the planetary region.', image: 'https://images-assets.nasa.gov/image/PIA01969/PIA01969~medium.jpg', credit: 'NASA/JPL' },
+                    { year: '1990', title: 'The Pale Blue Dot', desc: 'Voyager 1 turned its camera back toward home and captured Earth as a tiny point of light.', image: 'https://images-assets.nasa.gov/image/PIA00452/PIA00452~medium.jpg', credit: 'NASA/JPL' },
+                    { year: '2012', title: 'Interstellar space', desc: 'Voyager 1 became the first human-made object to enter interstellar space.', image: 'https://images-assets.nasa.gov/image/PIA17046/PIA17046~medium.jpg', credit: 'NASA/JPL-Caltech' },
+                    { year: '2026', title: 'One light-day milestone', desc: 'At approximately 25.9 billion kilometres, a radio signal takes about 24 hours to travel one way.', image: 'https://images-assets.nasa.gov/image/PIA23645/PIA23645~medium.jpg', credit: 'NASA/JPL-Caltech' }
                   ].map((item, index) => (
                     <div className="timeline-item" key={item.year}>
                       <div className="timeline-marker">{String(index + 1).padStart(2, '0')}</div>
