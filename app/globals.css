@@ -885,3 +885,71 @@
  .desktop-mission-layout .redesign-spacecraft .scene-wrap{height:clamp(280px,92vw,420px)!important;max-height:none!important}
  .redesign-spacecraft canvas{width:100%!important;max-width:100%!important;display:block!important}
 }
+
+
+/* Golden Record-led visual dossier */
+.dossier-gallery{gap:24px!important}
+.golden-record-hero{
+ display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:28px;align-items:center;
+ padding:clamp(24px,4vw,52px);background:linear-gradient(115deg,#171d1b 0%,#22251f 58%,#302819 100%);
+ border:1px solid #66583a;min-height:360px;overflow:hidden;position:relative;
+}
+.golden-record-copy{position:relative;z-index:1;max-width:470px}
+.dossier-kicker{display:block;color:#d5b76e;font:10px var(--mono);letter-spacing:.16em;margin-bottom:14px}
+.golden-record-copy h2{font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-.045em;font-weight:500;margin:0 0 18px;color:#f0eee5}
+.golden-record-copy p,.golden-record-story p,.dossier-section-heading>p{color:#b8b9ae;font-size:14px;line-height:1.8;max-width:480px}
+.dossier-external-link,.dossier-text-link{display:inline-flex;align-items:center;gap:8px;color:#e3c77e;font:10px var(--mono);letter-spacing:.08em;text-decoration:none;border-bottom:1px solid #8c7544;padding:0 0 7px;margin-top:16px}
+.golden-record-art{display:block;position:relative;min-width:0}
+.golden-record-art img{display:block;width:100%;height:300px;object-fit:contain;filter:drop-shadow(0 18px 30px #0009)}
+.golden-record-art>span{position:absolute;bottom:0;right:0;color:#e2c77d;font:9px var(--mono);letter-spacing:.13em;text-align:right}
+.golden-record-art small{display:block;color:#99988d;margin-top:5px}
+.golden-record-intro{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;padding:12px 0}
+.golden-record-cover{position:relative;min-height:280px;background:#151a18;overflow:hidden}
+.golden-record-cover img{width:100%;height:320px;display:block;object-fit:cover;object-position:center 42%;filter:saturate(.78)}
+.golden-record-cover span{position:absolute;bottom:0;left:0;padding:12px 15px;background:linear-gradient(transparent,#000b);width:100%;color:#eee4c8;font:9px var(--mono);letter-spacing:.12em}
+.golden-record-story h3,.dossier-section-heading h3{font-size:clamp(25px,3vw,36px);font-weight:500;line-height:1.13;letter-spacing:-.03em;margin:0 0 14px;color:var(--text)}
+.record-stats{display:flex;gap:28px;margin-top:25px;padding-top:18px;border-top:1px solid var(--line)}
+.record-stats div{display:flex;flex-direction:column;gap:5px}
+.record-stats strong{font-size:25px;font-weight:500;color:#e2c77d}
+.record-stats span{font:9px var(--mono);letter-spacing:.1em;color:var(--muted)}
+.record-contents-section,.record-image-section{padding:22px 0}
+.dossier-section-heading{margin-bottom:20px}
+.dossier-section-heading h3{margin-bottom:8px}
+.record-content-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.record-content-card{display:flex;flex-direction:column;min-width:0;text-decoration:none;color:inherit;background:#171d1b;border:1px solid var(--line);padding:0 0 18px;transition:border-color .2s,transform .2s}
+.record-content-card:hover{border-color:#a58b52;transform:translateY(-3px)}
+.record-content-card img{width:100%;height:160px;object-fit:cover;display:block;filter:saturate(.8)}
+.record-card-index{font:9px var(--mono);letter-spacing:.12em;color:#d5b76e;padding:16px 16px 8px}
+.record-content-card h4{font-size:20px;font-weight:500;margin:0 16px 8px}
+.record-content-card p{font-size:12px;line-height:1.65;color:var(--muted);margin:0 16px 16px;flex:1}
+.record-content-card b{display:flex;align-items:center;gap:7px;font:9px var(--mono);letter-spacing:.08em;color:#dfc27a;margin:0 16px}
+.record-image-strip{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px}
+.record-image-strip a{position:relative;display:block;min-width:0;overflow:hidden;background:#141917}
+.record-image-strip img{display:block;width:100%;height:220px;object-fit:cover;transition:transform .35s;filter:saturate(.8)}
+.record-image-strip a:first-child img{height:250px}
+.record-image-strip a:hover img{transform:scale(1.035)}
+.record-image-strip span{position:absolute;bottom:0;left:0;width:100%;padding:28px 12px 12px;background:linear-gradient(transparent,#000c);font:9px var(--mono);letter-spacing:.1em;color:#fff}
+.record-image-note{font-size:10px;color:var(--muted);margin-top:10px}
+.dossier-gallery .dossier-facts{padding:24px 0;background:transparent;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dossier-gallery .dossier-facts .dossier-section-heading{margin-bottom:16px}
+.dossier-gallery .dossier-distance{margin-top:0}
+.dossier-gallery .dossier-history{margin-top:0}
+@media(max-width:760px){
+ .golden-record-hero{grid-template-columns:1fr;gap:10px;padding:24px}
+ .golden-record-art img{height:220px}
+ .golden-record-art>span{bottom:-2px}
+ .golden-record-intro{grid-template-columns:1fr;gap:20px}
+ .golden-record-cover img{height:230px}
+ .record-content-grid{grid-template-columns:1fr}
+ .record-content-card img{height:190px}
+ .record-image-strip{grid-template-columns:1fr 1fr}
+ .record-image-strip a:first-child{grid-column:1/-1}
+ .record-image-strip img,.record-image-strip a:first-child img{height:170px}
+ .record-image-strip a:first-child img{height:210px}
+ .record-stats{gap:20px}
+}
+@media(max-width:420px){
+ .record-image-strip{grid-template-columns:1fr}
+ .record-image-strip a:first-child{grid-column:auto}
+ .record-image-strip img,.record-image-strip a:first-child img{height:190px}
+}
