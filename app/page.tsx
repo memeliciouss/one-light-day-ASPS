@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { FormEvent } from 'react';
 import dynamic from 'next/dynamic';
-import { Activity, ArrowUpRight, Menu, RadioTower, RefreshCw, Satellite, Search, Send, X } from 'lucide-react';
+import { Activity, ArrowUpRight, Menu, MessageCircle, RefreshCw, Satellite, Search, Send, X } from 'lucide-react';
 import { Contribution } from '@/lib/prompts';
 import { supabase } from '@/lib/supabase';
 
@@ -42,6 +42,7 @@ export default function Home() {
   const [expanded, setExpanded] = useState<string[]>([]);
   const [now, setNow] = useState(Date.now());
   const [cooldownUntil, setCooldownUntil] = useState(0);
+  const [activeMessageIndex, setActiveMessageIndex] = useState(0);
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
@@ -107,6 +108,14 @@ export default function Home() {
       stableHash(a.id + a.created_at) - stableHash(b.id + b.created_at)
     );
   }, [contributions]);
+  useEffect(() => {
+    if (shuffledMessages.length < 2) { setActiveMessageIndex(0); return; }
+    const rotation = window.setInterval(() => {
+      setActiveMessageIndex(index => (index + 1) % shuffledMessages.length);
+    }, 2500);
+    return () => window.clearInterval(rotation);
+  }, [shuffledMessages.length]);
+  const activeMessage = shuffledMessages.length ? shuffledMessages[activeMessageIndex % shuffledMessages.length] : null;
   const filtered = useMemo(
     () => contributions.filter(c => (c.name + ' ' + c.message).toLowerCase().includes(search.toLowerCase())),
     [contributions, search]
@@ -206,7 +215,7 @@ export default function Home() {
           </div>
 
           {view === 'tracker' && (
-            <div className="tracker-redesign desktop-mission-layout">
+            <div className="tracker-redesign">\n              <div className="desktop-mission-layout">
               <section className="panel spacecraft-panel redesign-spacecraft">
                 <div className="panel-head">
                   <div><span className="panel-index">01</span><h2>VOYAGER 1</h2></div>
@@ -230,7 +239,7 @@ export default function Home() {
                       <div><span>OUR COMPILED DISTANCE</span><strong>{collectivePct.toFixed(1)}%</strong></div>
                       <small>{contributions.length} / {TARGET_MESSAGES} messages</small>
                     </div>
-                    <div className="collective-track signal-track"><span style={{ width: collectivePct + '%' }} /><span className="signal-marker" style={{ left: collectivePct + '%' }}><RadioTower size={19} strokeWidth={2.4} /></span></div>
+                    <div className="collective-track signal-track"><span style={{ width: collectivePct + '%' }} /><span className="signal-marker" style={{ left: collectivePct + '%' }}><Send size={17} strokeWidth={2.5} /></span></div>
                     <div className="progress-foot">
                       <span>{fmt(collectiveDistance)} km represented</span>
                       <span>GOAL · {fmt(TARGET_KM)} km</span>
@@ -255,15 +264,14 @@ export default function Home() {
                       <span>MESSAGES FROM EARTH</span>
                       <button className="text-action" onClick={() => setView('archive')}>VIEW ARCHIVE <ArrowUpRight size={13} /></button>
                     </div>
-                    {shuffledMessages.length ? (
-                      <div className="message-marquee" aria-label="A selection of messages from the transmission archive">
-                        <div className="message-marquee-track">
-                          {[...shuffledMessages, ...shuffledMessages].map((item, index) => (
-                            <article className="message-marquee-item" key={item.id + '-' + index}>
-                              <p>“{item.message}”</p><span>— {item.name}</span>
-                            </article>
-                          ))}
-                        </div>
+                    {activeMessage ? (
+                      <div className="message-carousel-stage" aria-live="polite" aria-label="Rotating messages from the transmission archive">
+                        <article className="message-marquee-item message-featured" key={activeMessage.id + '-' + activeMessageIndex}>
+                          <div className="message-featured-top"><MessageCircle size={15} /><span>TRANSMISSION {String(activeMessageIndex + 1).padStart(2, '0')} / {String(shuffledMessages.length).padStart(2, '0')}</span></div>
+                          <p>“{activeMessage.message}”</p>
+                          <span className="message-author">— {activeMessage.name}</span>
+                        </article>
+                        <div className="message-carousel-dots" aria-hidden="true">{shuffledMessages.slice(0, Math.min(shuffledMessages.length, 8)).map((item, index) => <i key={item.id} className={index === activeMessageIndex % Math.min(shuffledMessages.length, 8) ? 'active' : ''} />)}</div>
                       </div>
                     ) : (
                       <div className="carousel-empty">Your message could be the first one here.</div>
@@ -297,6 +305,25 @@ export default function Home() {
 
                 </section>
               </div>
+              </div>
+              <section className="panel transmission-card transmission-full-row">
+                <div className="panel-head">
+                  <div><span className="panel-index">03</span><h2>SEND YOUR TRANSMISSION</h2></div>
+                  <span className="panel-tag">1-HOUR COOLDOWN</span>
+                </div>
+                <form className="submission-form redesigned-form" onSubmit={submit}>
+                  <div className="single-prompt"><span>YOUR QUESTION</span><p>What message would you like to send from Mars to Voyager 1?</p></div>
+                  <div className="transmission-form-grid">
+                    <label className="field-label">YOUR NAME<input value={name} onChange={e => setName(e.target.value)} maxLength={40} placeholder="Name or callsign" required /></label>
+                    <label className="field-label">YOUR MESSAGE <span>{message.length}/300</span><textarea value={message} onChange={e => setMessage(e.target.value)} maxLength={300} rows={3} placeholder="A message from Mars…" required /></label>
+                  </div>
+                  <div className="form-bottom redesigned-form-bottom">
+                    <span>{cooldownUntil > now ? 'Next transmission in ' + remainingLabel(cooldownUntil - now) : 'One transmission per hour, per browser.'}</span>
+                    <button className="primary-button" type="submit" disabled={submitting || cooldownUntil > now}>{submitting ? 'SENDING…' : 'SEND TRANSMISSION'} <Send size={15} /></button>
+                  </div>
+                  {notice && <div className={'form-notice ' + (notice.startsWith('TRANSMISSION') ? 'success' : '')}>{notice}</div>}
+                </form>
+              </section>
             </div>
           )}
 
@@ -367,9 +394,9 @@ export default function Home() {
                 <div className="timeline">
                   {[
                     { year: '1977', title: 'Launch', desc: 'Voyager 1 launched on 5 September from Cape Canaveral, beginning its journey through the outer Solar System.', image: 'https://images-assets.nasa.gov/image/PIA17464/PIA17464~medium.jpg', credit: 'NASA/JPL' },
-                    { year: '1979', title: 'Jupiter flyby', desc: 'Voyager 1 returned detailed observations of Jupiter, its atmosphere, rings and moons.', image: 'https://images-assets.nasa.gov/image/PIA01371/PIA01371~medium.jpg', credit: 'NASA/JPL' },
-                    { year: '1980', title: 'Saturn flyby', desc: 'Voyager 1 explored Saturn and its moon Titan before heading outwards from the planetary region.', image: 'https://images-assets.nasa.gov/image/PIA01969/PIA01969~medium.jpg', credit: 'NASA/JPL' },
-                    { year: '1990', title: 'The Pale Blue Dot', desc: 'Voyager 1 turned its camera back toward home and captured Earth as a tiny point of light.', image: 'https://images-assets.nasa.gov/image/PIA00452/PIA00452~medium.jpg', credit: 'NASA/JPL' },
+                    { year: '1979', title: 'Jupiter flyby', desc: 'Voyager 1 returned detailed observations of Jupiter, its atmosphere, rings and moons.', image: 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia01/pia01371/PIA01371.jpg', credit: 'NASA/JPL' },
+                    { year: '1980', title: 'Saturn flyby', desc: 'Voyager 1 explored Saturn and its moon Titan before heading outwards from the planetary region.', image: 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia01/pia01969/PIA01969.jpg', credit: 'NASA/JPL' },
+                    { year: '1990', title: 'The Pale Blue Dot', desc: 'Voyager 1 turned its camera back toward home and captured Earth as a tiny point of light.', image: 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia00/pia00452/PIA00452.jpg', credit: 'NASA/JPL' },
                     { year: '2012', title: 'Interstellar space', desc: 'Voyager 1 became the first human-made object to enter interstellar space.', image: 'https://images-assets.nasa.gov/image/PIA17046/PIA17046~medium.jpg', credit: 'NASA/JPL-Caltech' },
                     { year: '2026', title: 'One light-day milestone', desc: 'At approximately 25.9 billion kilometres, a radio signal takes about 24 hours to travel one way.', image: 'https://images-assets.nasa.gov/image/PIA23645/PIA23645~medium.jpg', credit: 'NASA/JPL-Caltech' }
                   ].map((item, index) => (
