@@ -14,11 +14,19 @@ function NasaVoyagerModel(){
   const model=useMemo(()=>gltf.scene.clone(true),[gltf.scene]);
   const group=useRef<THREE.Group>(null);
   useEffect(()=>{
-    const box=new THREE.Box3().setFromObject(model);const size=box.getSize(new THREE.Vector3());const center=box.getCenter(new THREE.Vector3());
-    model.position.sub(center);const max=Math.max(size.x,size.y,size.z)||1;model.scale.setScalar(2.35/max);
+    // Update world matrices before measuring: GLB node transforms otherwise produce
+    // an incorrect pivot and can place the spacecraft away from the camera centre.
+    model.updateMatrixWorld(true);
+    const box=new THREE.Box3().setFromObject(model);
+    const size=box.getSize(new THREE.Vector3());
+    const center=box.getCenter(new THREE.Vector3());
+    model.position.sub(center);
+    const maxDimension=Math.max(size.x,size.y,size.z)||1;
+    model.scale.setScalar(2.35/maxDimension);
+    model.updateMatrixWorld(true);
     model.traverse(o=>{if((o as THREE.Mesh).isMesh){const m=o as THREE.Mesh;m.castShadow=true;m.receiveShadow=true;}});
   },[model]);
-  useFrame((_,delta)=>{if(group.current)group.current.rotation.y+=delta*.09;});
+  // Keep the model fixed on first load. Visitors can rotate it deliberately with drag.
   return <group ref={group}><primitive object={model}/></group>;
 }
 export default function VoyagerScene(){
@@ -31,6 +39,6 @@ export default function VoyagerScene(){
     <ReferenceOrbit radius={2.15} rotation={[1.15,-.45,-.3]} speed={-.018} color="#b0b9a9" opacity={.42}/>
     <ReferenceOrbit radius={2.55} rotation={[.45,.8,.7]} speed={.012} color="#d5a84c" opacity={.25}/>
     {modelAvailable&&<Suspense fallback={null}><NasaVoyagerModel/></Suspense>}
-    <OrbitControls enablePan={false} minDistance={3.2} maxDistance={8} rotateSpeed={.7} zoomSpeed={.7}/>
+    <OrbitControls makeDefault target={[0,0,0]} enablePan={false} enableDamping dampingFactor={.08} minDistance={3.2} maxDistance={8} rotateSpeed={.7} zoomSpeed={.7}/>
   </Canvas>{!modelAvailable&&<div className="model-pending"><span>NASA 3D MODEL AWAITING FILE</span><b>Voyager Probe (B).glb</b><small>Add the official model to <code>public/models/</code>.</small></div>}</div>;
 }
