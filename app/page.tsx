@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import dynamic from 'next/dynamic';
-import { Activity, ArrowUpRight, Menu, MessageCircle, RadioTower, RefreshCw, Satellite, Search, Send, Volume2, VolumeX, X } from 'lucide-react';
+import { Activity, ArrowUpRight, Menu, MessageCircle, RadioTower, RefreshCw, Satellite, Search, Send, Instagram, Linkedin, Volume2, VolumeX, X } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Contribution } from '@/lib/prompts';
 import { supabase } from '@/lib/supabase';
@@ -219,6 +219,7 @@ export default function Home() {
       </header>
 
       <div className="workspace redesigned-workspace">
+        {mobileNav && <button className="mobile-nav-backdrop" type="button" aria-label="Close navigation" onClick={() => setMobileNav(false)} />}
         <aside className={'sidebar ' + (mobileNav ? 'sidebar-open' : '')}>
           <div className="side-heading">EXPLORE</div>
           <div className="nav-list">
@@ -612,7 +613,17 @@ export default function Home() {
             </div>
           )}
 
-          <footer className="main-footer"><span>ASTRONOMY & SPACE PHYSICS SOCIETY · PEC</span><span>A MESSAGE FROM MARS</span></footer>
+          <footer className="society-footer">
+            <a className="society-footer-brand" href="https://pec.ac.in/asps" target="_blank" rel="noreferrer">
+              <img src="/asps-logo.png" alt="Astronomy & Physics Society logo" />
+              <span><strong>Astronomy &amp; Space Physics Society</strong><small>Punjab Engineering College, Chandigarh</small></span>
+            </a>
+            <div className="society-footer-links">
+              <a href="https://www.instagram.com/asps.pec/" target="_blank" rel="noreferrer" aria-label="ASPS on Instagram"><Instagram size={19} /><span>Instagram</span></a>
+              <a href="https://www.linkedin.com/company/96045737/" target="_blank" rel="noreferrer" aria-label="ASPS on LinkedIn"><Linkedin size={19} /><span>LinkedIn</span></a>
+              <a href="https://linktr.ee/aspspec" target="_blank" rel="noreferrer" aria-label="ASPS links"><span className="footer-linktree-mark">↗</span><span>More links</span></a>
+            </div>
+          </footer>
         </section>
       </div>
     </main>
