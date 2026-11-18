@@ -644,3 +644,60 @@
 .transmission-full-row .field-label{
  text-align:left!important;
 }
+
+
+/* Simple horizontal carousel: equal-sized cards, no scaling */
+.message-carousel-stage{width:100%!important;overflow:hidden!important;padding:0 0 4px!important}
+.message-carousel-track{
+ display:flex!important;
+ align-items:stretch!important;
+ gap:12px!important;
+ width:max-content!important;
+ margin:0!important;
+ padding:0!important;
+ transform:translateX(calc(-90% - 12px))!important;
+ transition:transform .52s cubic-bezier(.22,.68,0,1)!important;
+}
+.message-carousel-track.is-sliding{
+ transform:translateX(calc(-180% - 24px))!important;
+}
+.message-carousel-track .message-featured{
+ position:relative!important;
+ top:auto!important;
+ left:auto!important;
+ flex:0 0 90%!important;
+ width:90%!important;
+ height:174px!important;
+ min-height:174px!important;
+ max-width:none!important;
+ margin:0!important;
+ padding:17px 20px!important;
+ box-sizing:border-box!important;
+ display:flex!important;
+ flex-direction:column!important;
+ justify-content:space-between!important;
+ opacity:1!important;
+ transform:none!important;
+ background:#252d29!important;
+ border:1px solid #8b7951!important;
+ border-radius:2px!important;
+ box-shadow:none!important;
+}
+.message-carousel-track .message-featured p{
+ font-size:18px!important;
+ line-height:1.5!important;
+ font-weight:600!important;
+ margin:12px 0!important;
+ display:block!important;
+ text-align:left!important;
+ overflow-wrap:anywhere!important;
+}
+.message-carousel-track .message-featured .message-author{font-size:13px!important;line-height:1.4!important}
+@media(max-width:700px){
+ .message-carousel-track{gap:8px!important;transform:translateX(calc(-90% - 8px))!important}
+ .message-carousel-track.is-sliding{transform:translateX(calc(-180% - 16px))!important}
+ .message-carousel-track .message-featured{height:158px!important;min-height:158px!important;padding:14px!important}
+ .message-carousel-track .message-featured p{font-size:16px!important}
+ .message-carousel-track .message-featured .message-author{font-size:12px!important}
+}
+@media(prefers-reduced-motion:reduce){.message-carousel-track{transition:none!important}}
