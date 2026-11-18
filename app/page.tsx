@@ -204,7 +204,7 @@ export default function Home() {
 
         <section className="main-column">
           <div className="page-heading">
-            <div>
+            <div className="page-heading-copy">
               <div className="eyebrow">ONE LIGHT-DAY <span>/</span> {pageTitle.toUpperCase()}</div>
               <h1>{view === 'tracker' ? 'Voyager 1' : view === 'archive' ? 'Transmissions from Earth' : 'The mission behind the signal'}</h1>
               {view === 'tracker' && (
@@ -214,6 +214,8 @@ export default function Home() {
               )}
             </div>
             <div className="heading-actions">
+              <button className="heading-link-button" onClick={() => setView('dossier')}>MISSION DOSSIER <ArrowUpRight size={13} /></button>
+              <button className="heading-link-button" onClick={() => setView('archive')}>TRANSMISSION ARCHIVE <ArrowUpRight size={13} /></button>
               <span className="utc-clock">{formatIST(now, { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })} IST</span>
               <button className="square-button" onClick={loadContributions} title="Refresh transmissions"><RefreshCw size={15} /></button>
             </div>
@@ -272,11 +274,19 @@ export default function Home() {
                     </div>
                     {activeMessage ? (
                       <div className="message-carousel-stage" aria-live="polite" aria-label="Rotating messages from the transmission archive">
-                        <article className="message-marquee-item message-featured" key={activeMessage.id + '-' + activeMessageIndex}>
-                          <div className="message-featured-top"><MessageCircle size={15} /><span>TRANSMISSION {String(activeMessageIndex + 1).padStart(2, '0')} / {String(shuffledMessages.length).padStart(2, '0')}</span></div>
-                          <p>“{activeMessage.message}”</p>
-                          <span className="message-author">— {activeMessage.name}</span>
-                        </article>
+                        <div className="message-carousel-track">
+                          {[-1, 0, 1].map(offset => {
+                            const index = (activeMessageIndex + offset + shuffledMessages.length) % shuffledMessages.length;
+                            const item = shuffledMessages[index];
+                            return (
+                              <article className={'message-marquee-item message-featured ' + (offset === 0 ? 'is-current' : 'is-peek')} key={item.id + '-' + offset}>
+                                <div className="message-featured-top"><MessageCircle size={15} /><span>TRANSMISSION {String(index + 1).padStart(2, '0')} / {String(shuffledMessages.length).padStart(2, '0')}</span></div>
+                                <p>“{item.message}”</p>
+                                <span className="message-author">— {item.name}</span>
+                              </article>
+                            );
+                          })}
+                        </div>
                         <div className="message-carousel-dots" aria-hidden="true">{shuffledMessages.slice(0, Math.min(shuffledMessages.length, 8)).map((item, index) => <i key={item.id} className={index === activeMessageIndex % Math.min(shuffledMessages.length, 8) ? 'active' : ''} />)}</div>
                       </div>
                     ) : (
