@@ -1079,3 +1079,31 @@
  .brand-mark{width:39px;height:39px}
  .sidebar-progress>small{font-size:7px}
 }
+
+
+/* Collective message progress and close-up Golden Record cover details */
+.sidebar-progress-heading span{font-size:8px;letter-spacing:.07em}
+.sidebar-progress>small{font-size:7px;line-height:1.5}
+.glyph-detail-carousel{margin-top:20px;border:1px solid var(--line);background:var(--panel);overflow:hidden}
+.glyph-detail-slide{display:none;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);min-height:210px}
+.glyph-detail-slide.active{display:grid}
+.glyph-detail-image{position:relative;overflow:hidden;min-height:210px;background:#090b0a}
+.glyph-detail-image img{position:absolute;width:100%;height:100%;object-fit:cover;transform:scale(2.05)}
+.glyph-detail-image .glyph-crop-play{transform-origin:22% 22%}
+.glyph-detail-image .glyph-crop-image{transform-origin:78% 22%}
+.glyph-detail-image .glyph-crop-pulsar{transform-origin:22% 78%}
+.glyph-detail-image .glyph-crop-hydrogen{transform-origin:78% 78%}
+.glyph-detail-copy{align-self:center;padding:20px 22px}
+.glyph-detail-copy>span{font:8px var(--mono);letter-spacing:.1em;color:var(--accent2)}
+.glyph-detail-copy h4{font:500 18px var(--display);margin:10px 0 7px}
+.glyph-detail-copy p{font-size:11px;line-height:1.65;color:var(--muted);margin:0}
+.glyph-detail-controls{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-top:1px solid var(--line)}
+.glyph-detail-controls>button{width:30px;height:27px;border:1px solid var(--line2);background:transparent;color:var(--ink)}
+.glyph-detail-controls>div{display:flex;gap:7px}
+.glyph-detail-controls>div button{width:6px;height:6px;padding:0;border:0;border-radius:50%;background:#59615a}
+.glyph-detail-controls>div button.active{background:var(--accent2);width:17px;border-radius:5px}
+@media(max-width:600px){
+ .glyph-detail-slide.active{grid-template-columns:1fr}
+ .glyph-detail-image{min-height:190px}
+ .glyph-detail-copy{padding:15px}
+}
