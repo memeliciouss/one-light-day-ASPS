@@ -836,3 +836,24 @@
 .transmission-body>p{font-size:17px!important;line-height:1.65!important}
 .transmission-body>strong{display:block!important;font-size:15px!important;line-height:1.5!important;margin-top:12px!important;color:var(--text)!important}
 @media(max-width:700px){.transmission-body>p{font-size:15px!important}.transmission-body>strong{font-size:14px!important}}
+
+
+/* Subtler card contrast for the Embla message slides */
+.message-carousel-panel .embla-slide .message-featured{
+ background:#202723!important;
+ border-color:#626b5c!important;
+}
+/* Society name slightly more legible in the top bar */
+.top-society{font-size:12px!important;letter-spacing:.08em!important;font-weight:600!important}
+/* Scale markers on Voyager's Sun-to-space progress bar */
+.voyager-track{position:relative!important;overflow:visible!important}
+.voyager-track .distance-marker{
+ position:absolute;z-index:4;top:50%;width:9px;height:9px;border-radius:50%;
+ transform:translate(-50%,-50%);border:1px solid #111a18;
+ cursor:help;transition:transform .15s ease;
+}
+.voyager-track .distance-marker:hover{transform:translate(-50%,-50%) scale(1.35)}
+.voyager-track .sun-marker{background:#efbd55;border-color:#f8d98e}
+.voyager-track .uranus-marker{background:#a9dce0;border-color:#d6f4f3}
+.voyager-track .neptune-marker{background:#668fda;border-color:#b4c9f4}
+.voyager-track .kuiper-marker{background:#b8a9d1;border-color:#e0d5f0}
