@@ -23,3 +23,6 @@ create policy "Anyone can submit a contribution"
 
 -- Enable Realtime for the public archive.
 alter publication supabase_realtime add table public.contributions;
+
+-- Include the deleted row's ID in Realtime events so connected archives can remove it.
+alter table public.contributions replica identity full;
