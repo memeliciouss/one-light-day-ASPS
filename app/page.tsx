@@ -408,7 +408,7 @@ export default function Home() {
                   <a className="dossier-external-link" href="https://science.nasa.gov/gallery/images-on-the-golden-record/" target="_blank" rel="noreferrer">EXPLORE NASA’S GOLDEN RECORD IMAGE GALLERY <ArrowUpRight size={13} /></a>
                 </div>
                 <a className="golden-image-feature-art" href="https://science.nasa.gov/gallery/images-on-the-golden-record/" target="_blank" rel="noreferrer">
-                  <img src="https://science.nasa.gov/wp-content/uploads/2024/04/golden-record-cover.jpg" alt="The Voyager Golden Record and its image collection" loading="lazy" />
+                  <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia14/pia14113/PIA14113.jpg?crop=faces%2Cfocalpoint&fit=clip&h=600&w=900" alt="The Voyager Golden Record and its image collection" loading="lazy" />
                   <span>NASA’S OFFICIAL IMAGE COLLECTION</span>
                 </a>
               </section>
@@ -438,7 +438,7 @@ export default function Home() {
                     <b>HEAR THE GREETINGS <ArrowUpRight size={12} /></b>
                   </a>
                   <a className="record-content-card record-images" href="https://science.nasa.gov/gallery/images-on-the-golden-record/" target="_blank" rel="noreferrer">
-                    <img src="https://science.nasa.gov/wp-content/uploads/2024/04/golden-record-cover.jpg" alt="The Voyager Golden Record image collection" loading="lazy" />
+                    <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia14/pia14113/PIA14113.jpg?crop=faces%2Cfocalpoint&fit=clip&h=600&w=900" alt="The Voyager Golden Record image collection" loading="lazy" />
                     <span className="record-card-index">04 / EXPLORE</span><h4>115 pictures from Earth</h4>
                     <p>Explore the images chosen to introduce our planet — people, places, science and the natural world.</p>
                     <b>OPEN NASA’S IMAGE GALLERY <ArrowUpRight size={12} /></b>
