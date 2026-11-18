@@ -1285,3 +1285,14 @@
  .mobile-nav-backdrop{display:block;position:fixed;inset:58px 0 0;z-index:34;width:100%;height:calc(100dvh - 58px);padding:0;border:0;background:rgba(0,0,0,.42)}
  .sidebar.sidebar-open{z-index:35}
 }
+
+
+/* Make the primary transmission action easier to read */
+.redesigned-form-bottom .primary-button{
+  font-size:12px!important;
+  padding:14px 17px;
+  letter-spacing:.055em;
+}
+@media(max-width:700px){
+ .redesigned-form-bottom .primary-button{font-size:12px!important}
+}
