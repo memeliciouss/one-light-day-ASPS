@@ -1,11 +1,11 @@
 'use client';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, useGLTF } from '@react-three/drei';
-import { Suspense, useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 function ReferenceOrbit({radius,rotation,speed,color,opacity=0.5}:{radius:number;rotation:[number,number,number];speed:number;color:string;opacity?:number}) {
-  const ref=THREE.useRef<THREE.Group>(null);
+  const ref=useRef<THREE.Group>(null);
   useFrame((_,delta)=>{if(ref.current)ref.current.rotation.z+=delta*speed;});
   return <group ref={ref} rotation={rotation}><mesh><torusGeometry args={[radius,.006,6,160]}/><meshBasicMaterial color={color} transparent opacity={opacity}/></mesh><mesh position={[radius,0,0]}><sphereGeometry args={[.035,12,12]}/><meshBasicMaterial color={color}/></mesh></group>;
 }
