@@ -368,7 +368,7 @@ export default function Home() {
                     { year: '1979', title: 'Jupiter flyby', desc: 'Voyager 1 returned detailed observations of Jupiter, its atmosphere, rings and moons.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA01371.jpg', credit: 'NASA/JPL' },
                     { year: '1980', title: 'Saturn flyby', desc: 'Voyager 1 explored Saturn and its moon Titan before heading outwards from the planetary region.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA01969.jpg', credit: 'NASA/JPL' },
                     { year: '1990', title: 'The Pale Blue Dot', desc: 'Voyager 1 turned its camera back toward home and captured Earth as a tiny point of light.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA00452.jpg', credit: 'NASA/JPL' },
-                    { year: '2012', title: 'Interstellar space', desc: 'Voyager 1 became the first human-made object to enter interstellar space.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA17462.jpg', credit: 'NASA/JPL-Caltech' },
+                    { year: '2012', title: 'Interstellar space', desc: 'Voyager 1 became the first human-made object to enter interstellar space.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA17046.jpg', credit: 'NASA/JPL-Caltech' },
                     { year: '2026', title: 'One light-day milestone', desc: 'At approximately 25.9 billion kilometres, a radio signal takes about 24 hours to travel one way.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA23645.jpg', credit: 'NASA/JPL-Caltech' }
                   ].map((item, index) => (
                     <div className="timeline-item" key={item.year}>
