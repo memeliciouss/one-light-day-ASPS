@@ -7,7 +7,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 function SpaceEnvironment(){
-  const hdr=useLoader(EXRLoader,'/hdri/NightSkyHDRI008_1K_HDR.exr');
+  const hdr=useLoader(EXRLoader,'/hdri/NightSkyHDRI008_1K_TONEMAPPED.exr');
   const background=useLoader(THREE.TextureLoader,'/hdri/NightSkyHDRI008_1K_TONEMAPPED.jpg');
   const scene=useThree(state=>state.scene);
   useEffect(()=>{
