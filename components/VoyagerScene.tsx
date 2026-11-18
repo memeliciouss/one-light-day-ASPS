@@ -15,7 +15,9 @@ function SpaceEnvironment(){
     background.mapping=THREE.EquirectangularReflectionMapping;
     scene.environment=hdr;
     scene.background=background;
-    return ()=>{scene.environment=null;scene.background=null;};
+    scene.environmentIntensity=0.18;
+    scene.backgroundIntensity=0.42;
+    return ()=>{scene.environment=null;scene.background=null;scene.environmentIntensity=1;scene.backgroundIntensity=1;};
   },[hdr,background,scene]);
   return null;
 }
@@ -44,7 +46,7 @@ export default function VoyagerScene(){
   const [modelAvailable,setModelAvailable]=useState(false);
   useEffect(()=>{fetch('/models/voyager-probe-b.glb',{method:'HEAD'}).then(r=>setModelAvailable(r.ok)).catch(()=>setModelAvailable(false));},[]);
   return <div className="scene-canvas"><Canvas camera={{position:[0,0,7.1],fov:42}} dpr={[1,1.5]} gl={{antialias:true,alpha:true}}>
-    <ambientLight intensity={1.5}/><directionalLight position={[4,5,5]} intensity={2.5} color="#fff0d0"/><pointLight position={[-3,-2,3]} intensity={1.3} color="#d6a94c"/>
+    <ambientLight intensity={0.55}/><directionalLight position={[4,5,5]} intensity={1.15} color="#fff0d0"/><pointLight position={[-3,-2,3]} intensity={0.35} color="#d6a94c"/>
     <SpaceEnvironment/>
     {modelAvailable&&<Suspense fallback={null}><NasaVoyagerModel/></Suspense>}
     <OrbitControls makeDefault target={[-0.15,0.18,0]} enablePan={false} enableDamping dampingFactor={.08} minDistance={3.5} maxDistance={9} rotateSpeed={.7} zoomSpeed={.7}/>
