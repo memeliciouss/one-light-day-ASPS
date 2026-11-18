@@ -206,11 +206,11 @@ export default function Home() {
           </div>
 
           {view === 'tracker' && (
-            <div className="tracker-redesign">
+            <div className="tracker-redesign desktop-mission-layout">
               <section className="panel spacecraft-panel redesign-spacecraft">
                 <div className="panel-head">
                   <div><span className="panel-index">01</span><h2>VOYAGER 1</h2></div>
-                  <span className="panel-tag">INTERACTIVE SPACECRAFT VIEW</span>
+                  <span className="panel-tag">INTERACTIVE MODEL</span>
                 </div>
                 <div className="scene-wrap"><VoyagerScene /></div>
                 <div className="scene-foot redesign-scene-foot">
@@ -219,7 +219,7 @@ export default function Home() {
                 </div>
               </section>
 
-              <div className="tracker-bottom-grid">
+              <div className="mission-side-stack">
                 <section className="panel journey-card">
                   <div className="panel-head">
                     <div><span className="panel-index">02</span><h2>OUR COLLECTIVE JOURNEY</h2></div>
@@ -228,7 +228,7 @@ export default function Home() {
                   <div className="journey-progress-block">
                     <div className="progress-heading">
                       <div><span>OUR COMPILED DISTANCE</span><strong>{collectivePct.toFixed(1)}%</strong></div>
-                      <small>{contributions.length} / {TARGET_MESSAGES} transmissions</small>
+                      <small>{contributions.length} / {TARGET_MESSAGES} messages</small>
                     </div>
                     <div className="collective-track"><span style={{ width: collectivePct + '%' }} /></div>
                     <div className="progress-foot">
@@ -238,7 +238,7 @@ export default function Home() {
                   </div>
                   <div className="journey-progress-block voyager-reference">
                     <div className="progress-heading">
-                      <div><span>VOYAGER 1 · CURRENT DISTANCE</span><strong>100%</strong></div>
+                      <div><span>VOYAGER 1 · CURRENT DISTANCE</span></div>
                       <small>{fmt(estimatedDistance)} km from the Sun</small>
                     </div>
                     <div className="collective-track voyager-track"><span style={{ width: '100%' }} /></div>
@@ -247,7 +247,7 @@ export default function Home() {
                       <span>VOYAGER 1 · {voyagerAU.toFixed(1)} AU</span>
                     </div>
                   </div>
-                  <p className="journey-explainer">Each transmission adds the equivalent of 10 minutes of light travel — together, we're working towards one light-day.</p>
+                  <p className="journey-explainer">Each message adds 10 minutes of light travel. Together, we're working towards one light-day.</p>
                 </section>
 
                 <section className="panel transmission-card">
@@ -364,12 +364,12 @@ export default function Home() {
                 <div className="timeline-summary"><strong>From launch to interstellar space.</strong><span>The milestones that shaped Voyager 1's journey.</span></div>
                 <div className="timeline">
                   {[
-                    { year: '1977', title: 'Launch', desc: 'Voyager 1 launched on 5 September from Cape Canaveral, beginning its journey through the outer Solar System.', image: 'https://images-assets.nasa.gov/image/PIA17464/PIA17464~medium.jpg', credit: 'NASA/JPL' },
-                    { year: '1979', title: 'Jupiter flyby', desc: 'Voyager 1 returned detailed observations of Jupiter, its atmosphere, rings and moons.', image: 'https://images-assets.nasa.gov/image/PIA01371/PIA01371~medium.jpg', credit: 'NASA/JPL' },
-                    { year: '1980', title: 'Saturn flyby', desc: 'Voyager 1 explored Saturn and its moon Titan before heading outwards from the planetary region.', image: 'https://images-assets.nasa.gov/image/PIA01969/PIA01969~medium.jpg', credit: 'NASA/JPL' },
-                    { year: '1990', title: 'The Pale Blue Dot', desc: 'Voyager 1 turned its camera back toward home and captured Earth as a tiny point of light.', image: 'https://images-assets.nasa.gov/image/PIA00452/PIA00452~medium.jpg', credit: 'NASA/JPL' },
-                    { year: '2012', title: 'Interstellar space', desc: 'Voyager 1 became the first human-made object to enter interstellar space.', image: 'https://images-assets.nasa.gov/image/PIA17046/PIA17046~medium.jpg', credit: 'NASA/JPL-Caltech' },
-                    { year: '2026', title: 'One light-day milestone', desc: 'At approximately 25.9 billion kilometres, a radio signal takes about 24 hours to travel one way.', image: 'https://images-assets.nasa.gov/image/PIA23645/PIA23645~medium.jpg', credit: 'NASA/JPL-Caltech' }
+                    { year: '1977', title: 'Launch', desc: 'Voyager 1 launched on 5 September from Cape Canaveral, beginning its journey through the outer Solar System.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA17464.jpg', credit: 'NASA/JPL' },
+                    { year: '1979', title: 'Jupiter flyby', desc: 'Voyager 1 returned detailed observations of Jupiter, its atmosphere, rings and moons.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA01371.jpg', credit: 'NASA/JPL' },
+                    { year: '1980', title: 'Saturn flyby', desc: 'Voyager 1 explored Saturn and its moon Titan before heading outwards from the planetary region.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA01969.jpg', credit: 'NASA/JPL' },
+                    { year: '1990', title: 'The Pale Blue Dot', desc: 'Voyager 1 turned its camera back toward home and captured Earth as a tiny point of light.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA00452.jpg', credit: 'NASA/JPL' },
+                    { year: '2012', title: 'Interstellar space', desc: 'Voyager 1 became the first human-made object to enter interstellar space.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA17462.jpg', credit: 'NASA/JPL-Caltech' },
+                    { year: '2026', title: 'One light-day milestone', desc: 'At approximately 25.9 billion kilometres, a radio signal takes about 24 hours to travel one way.', image: 'https://photojournal.jpl.nasa.gov/jpeg/PIA23645.jpg', credit: 'NASA/JPL-Caltech' }
                   ].map((item, index) => (
                     <div className="timeline-item" key={item.year}>
                       <div className="timeline-marker">{String(index + 1).padStart(2, '0')}</div>
