@@ -278,32 +278,6 @@ export default function Home() {
                     )}
                   </div></section>
 
-                <section className="panel transmission-card">
-                  <div className="panel-head">
-                    <div><span className="panel-index">03</span><h2>SEND YOUR TRANSMISSION</h2></div>
-                    <span className="panel-tag">1-HOUR COOLDOWN</span>
-                  </div>
-                  <form className="submission-form redesigned-form" onSubmit={submit}>
-                    <div className="single-prompt">
-                      <span>YOUR QUESTION</span>
-                      <p>What message would you like to send from Mars to Voyager 1?</p>
-                    </div>
-                    <label className="field-label">YOUR NAME
-                      <input value={name} onChange={e => setName(e.target.value)} maxLength={40} placeholder="Name or callsign" required />
-                    </label>
-                    <label className="field-label">YOUR MESSAGE <span>{message.length}/300</span>
-                      <textarea value={message} onChange={e => setMessage(e.target.value)} maxLength={300} rows={3} placeholder="A message from Mars…" required />
-                    </label>
-                    <div className="form-bottom redesigned-form-bottom">
-                      <span>{cooldownUntil > now ? 'Next transmission in ' + remainingLabel(cooldownUntil - now) : 'One transmission per hour, per browser.'}</span>
-                      <button className="primary-button" type="submit" disabled={submitting || cooldownUntil > now}>
-                        {submitting ? 'SENDING…' : 'SEND TRANSMISSION'} <Send size={15} />
-                      </button>
-                    </div>
-                    {notice && <div className={'form-notice ' + (notice.startsWith('TRANSMISSION') ? 'success' : '')}>{notice}</div>}
-                  </form>
-
-                </section>
               </div>
               </div>
               <section className="panel transmission-card transmission-full-row">
