@@ -400,6 +400,19 @@ export default function Home() {
                 </div>
               </section>
 
+              <section className="golden-image-feature">
+                <div className="golden-image-feature-copy">
+                  <span className="dossier-kicker">THE IMAGES ON THE GOLDEN RECORD</span>
+                  <h3>115 pictures.<br />One portrait of Earth.</h3>
+                  <p>From human anatomy and DNA to landscapes, animals, cities and everyday life — these are the images selected to introduce our world to whoever might find Voyager.</p>
+                  <a className="dossier-external-link" href="https://science.nasa.gov/gallery/images-on-the-golden-record/" target="_blank" rel="noreferrer">EXPLORE NASA’S GOLDEN RECORD IMAGE GALLERY <ArrowUpRight size={13} /></a>
+                </div>
+                <a className="golden-image-feature-art" href="https://science.nasa.gov/gallery/images-on-the-golden-record/" target="_blank" rel="noreferrer">
+                  <img src="https://science.nasa.gov/wp-content/uploads/2024/04/golden-record-cover.jpg" alt="The Voyager Golden Record and its image collection" loading="lazy" />
+                  <span>NASA’S OFFICIAL IMAGE COLLECTION</span>
+                </a>
+              </section>
+
               <section className="record-contents-section">
                 <div className="dossier-section-heading">
                   <span className="dossier-kicker">WHAT DID WE SEND?</span>
@@ -412,17 +425,23 @@ export default function Home() {
                     <p>Whales, thunder, birds, footsteps, laughter and the sounds of a living planet.</p>
                     <b>EXPLORE THE SOUNDS <ArrowUpRight size={12} /></b>
                   </a>
-                  <a className="record-content-card record-music" href="https://science.nasa.gov/mission/voyager/golden-record-contents/music/" target="_blank" rel="noreferrer">
+                  <a className="record-content-card record-music" href="https://open.spotify.com/playlist/4gPhGa5PrRwjEqiMFKPyNK" target="_blank" rel="noreferrer">
                     <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia23/pia23645/PIA23645.jpg?crop=faces%2Cfocalpoint&fit=clip&h=600&w=900" alt="Voyager spacecraft in deep space" loading="lazy" />
                     <span className="record-card-index">02 / MUSIC</span><h4>A playlist for the universe</h4>
                     <p>From Bach and Mozart to Chuck Berry and Indian classical music — a snapshot of music across cultures.</p>
-                    <b>EXPLORE THE MUSIC <ArrowUpRight size={12} /></b>
+                    <b>OPEN THE GOLDEN RECORD PLAYLIST <ArrowUpRight size={12} /></b>
                   </a>
                   <a className="record-content-card record-greetings" href="https://science.nasa.gov/mission/voyager/golden-record-contents/greetings/" target="_blank" rel="noreferrer">
                     <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia17/pia17464/PIA17464.jpg?crop=faces%2Cfocalpoint&fit=clip&h=600&w=900" alt="Voyager spacecraft being prepared for its journey" loading="lazy" />
                     <span className="record-card-index">03 / HELLO</span><h4>55 ways to say hello</h4>
                     <p>Greetings from people on Earth, in languages from around the world — including Hindi and Bengali.</p>
                     <b>HEAR THE GREETINGS <ArrowUpRight size={12} /></b>
+                  </a>
+                  <a className="record-content-card record-images" href="https://science.nasa.gov/gallery/images-on-the-golden-record/" target="_blank" rel="noreferrer">
+                    <img src="https://science.nasa.gov/wp-content/uploads/2024/04/golden-record-cover.jpg" alt="The Voyager Golden Record image collection" loading="lazy" />
+                    <span className="record-card-index">04 / EXPLORE</span><h4>115 pictures from Earth</h4>
+                    <p>Explore the images chosen to introduce our planet — people, places, science and the natural world.</p>
+                    <b>OPEN NASA’S IMAGE GALLERY <ArrowUpRight size={12} /></b>
                   </a>
                 </div>
               </section>
@@ -452,7 +471,6 @@ export default function Home() {
                     <div><button type="button" onClick={() => setRecordImageIndex(index => (index + 3) % 4)} aria-label="Previous Voyager image">←</button><button type="button" onClick={() => setRecordImageIndex(index => (index + 1) % 4)} aria-label="Next Voyager image">→</button></div>
                   </div>
                 </div>
-                <a className="dossier-text-link" href="https://science.nasa.gov/mission/voyager/golden-record-contents/images/" target="_blank" rel="noreferrer">BROWSE NASA’S GOLDEN RECORD IMAGE COLLECTION <ArrowUpRight size={13} /></a>
                 <p className="record-image-note">NASA’s online gallery displays a subset of the images; some original photographs are copyright-protected.</p>
               </section>
 
