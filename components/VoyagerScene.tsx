@@ -2,12 +2,12 @@
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { useLoader, useThree } from '@react-three/fiber';
-import { EXRLoader } from 'three/addons/loaders/EXRLoader.js';
+import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 function SpaceEnvironment(){
-  const hdr=useLoader(EXRLoader,'/hdri/NightSkyHDRI008_1K_TONEMAPPED.exr');
+  const hdr=useLoader(RGBELoader,'/hdri/star_night.hdr');
   const scene=useThree(state=>state.scene);
   useEffect(()=>{
     hdr.mapping=THREE.EquirectangularReflectionMapping;
