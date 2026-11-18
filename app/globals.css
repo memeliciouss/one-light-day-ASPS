@@ -185,3 +185,94 @@
  .journey-caption{font-size:7px}
  .journey-analogy{font-size:10px}
 }
+
+
+/* ONE LIGHT-DAY: simplified tracker layout */
+.redesigned-workspace{grid-template-columns:176px minmax(0,1fr)!important;max-width:1800px}
+.redesigned-workspace .sidebar{padding:20px 10px 14px}
+.redesigned-workspace .side-heading{font-size:8px;letter-spacing:.12em}
+.redesigned-workspace .nav-item{padding:10px 9px;gap:9px;font-size:11px}
+.redesigned-workspace .nav-item span{white-space:normal;line-height:1.3}
+.redesigned-workspace .nav-item small{display:none}
+.redesigned-workspace .sidebar-bottom{margin-top:auto}
+.redesigned-workspace .main-column{min-width:0;padding:22px clamp(14px,2vw,30px) 18px}
+.redesigned-workspace .page-heading{margin-bottom:17px}
+.redesigned-workspace .page-heading h1{font-size:clamp(23px,2.4vw,31px)}
+.tracker-redesign{display:flex;flex-direction:column;gap:14px}
+.redesign-spacecraft .panel-head{padding-bottom:10px}
+.redesign-spacecraft .scene-wrap{height:clamp(300px,42vw,470px);max-height:470px}
+.redesign-scene-foot{height:38px;justify-content:space-between}
+.tracker-bottom-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:stretch}
+.tracker-bottom-grid>.panel{min-width:0;display:flex;flex-direction:column}
+.journey-card .panel-head,.transmission-card .panel-head{min-height:53px}
+.journey-progress-block{padding:17px 17px 13px}
+.progress-heading{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:10px}
+.progress-heading>div{display:flex;flex-direction:column;gap:5px}
+.progress-heading>div>span,.progress-heading>small{font:8px var(--mono);letter-spacing:.06em;color:var(--muted)}
+.progress-heading>div>strong{font:600 25px var(--display);color:var(--accent2);letter-spacing:-.04em}
+.progress-heading>small{text-align:right;letter-spacing:0}
+.collective-track{height:9px;border-radius:10px;background:#343a35;overflow:hidden}
+.collective-track>span{height:100%;display:block;background:linear-gradient(90deg,#a67c37,#edc76f);border-radius:10px;transition:width .5s ease}
+.progress-foot{display:flex;justify-content:space-between;gap:10px;margin-top:8px;font:8px var(--mono);color:var(--dim)}
+.voyager-reference{border-top:1px solid var(--line)}
+.voyager-track>span{background:linear-gradient(90deg,#778e9b,#b7c9d0)}
+.journey-explainer{margin:auto 17px 16px;padding-top:12px;border-top:1px solid var(--line);font-size:10px;line-height:1.55;color:var(--muted)}
+.transmission-card .redesigned-form{padding:13px 16px 12px;display:flex;flex-direction:column;gap:11px}
+.single-prompt{padding:0 0 4px}
+.single-prompt>span,.carousel-heading>span{font:8px var(--mono);letter-spacing:.1em;color:var(--accent)}
+.single-prompt p{font:600 15px/1.4 var(--display);margin:6px 0 0;color:var(--ink)}
+.redesigned-form .field-label{gap:6px;font-size:8px}
+.redesigned-form input,.redesigned-form textarea{padding:10px 11px;font-size:11px}
+.redesigned-form textarea{min-height:76px;resize:vertical}
+.redesigned-form-bottom{align-items:center;gap:10px;margin-top:0}
+.redesigned-form-bottom>span{font:8px/1.45 var(--mono);color:var(--muted)}
+.redesigned-form-bottom .primary-button{padding:10px 12px;font-size:8px;white-space:nowrap}
+.message-carousel-section{margin-top:auto;border-top:1px solid var(--line);padding:11px 0 0;overflow:hidden}
+.carousel-heading{display:flex;justify-content:space-between;align-items:center;padding:0 15px 10px}
+.carousel-heading .text-action{font-size:8px}
+.message-marquee{overflow:hidden;position:relative;width:100%;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.message-marquee-track{display:flex;width:max-content;animation:message-marquee 70s linear infinite}
+.message-marquee:hover .message-marquee-track{animation-play-state:paused}
+.message-marquee-item{width:230px;min-height:105px;flex:0 0 230px;padding:12px;margin:0 5px 8px;background:#1d221e;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
+.message-marquee-item p{font:11px/1.5 var(--display);color:var(--ink);margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.message-marquee-item span{font:8px var(--mono);color:var(--accent2)}
+@keyframes message-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.carousel-empty{padding:17px 15px;font-size:10px;color:var(--muted)}
+.redesigned-archive .archive-toolbar{padding:14px 17px}
+.redesigned-archive .transmission-list{padding:0 17px}
+.mission-dossier{display:flex;flex-direction:column;gap:14px}
+.dossier-distance .journey-visual{padding:22px}
+.dossier-facts .facts-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.dossier-facts .fact{border-bottom:0}
+.dossier-history .timeline{padding:18px}
+@media(max-width:1050px){
+ .redesigned-workspace{grid-template-columns:160px minmax(0,1fr)!important}
+ .tracker-bottom-grid{grid-template-columns:1fr}
+ .redesign-spacecraft .scene-wrap{height:360px}
+ .dossier-facts .facts-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+ .redesigned-workspace{display:block!important}
+ .redesigned-workspace .sidebar{display:none;position:fixed;z-index:45;top:58px;bottom:0;left:0;width:245px;min-height:0;box-shadow:10px 0 30px rgba(0,0,0,.4)}
+ .redesigned-workspace .sidebar.sidebar-open{display:flex}
+ .redesigned-workspace .main-column{padding:14px 10px 12px}
+ .redesigned-workspace .page-heading{align-items:center}
+ .redesigned-workspace .page-heading h1{font-size:22px}
+ .tracker-redesign{gap:10px}
+ .redesign-spacecraft .scene-wrap{height:290px}
+ .tracker-bottom-grid{gap:10px}
+ .journey-card .panel-head,.transmission-card .panel-head{min-height:48px}
+ .journey-progress-block{padding:14px 13px 11px}
+ .journey-explainer{margin:0 13px 13px}
+ .transmission-card .redesigned-form{padding:12px}
+ .redesigned-form-bottom{align-items:stretch;flex-direction:column}
+ .redesigned-form-bottom .primary-button{width:100%;justify-content:space-between}
+ .message-marquee-track{animation-duration:58s}
+ .dossier-facts .facts-grid{grid-template-columns:1fr 1fr}
+ .dossier-facts .fact{padding:12px 10px}
+ .dossier-history .timeline{padding:14px 10px}
+}
+@media(prefers-reduced-motion:reduce){
+ .message-marquee-track{animation:none}
+ .collective-track>span{transition:none}
+}
