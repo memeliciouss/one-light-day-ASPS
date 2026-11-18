@@ -8,17 +8,15 @@ import * as THREE from 'three';
 
 function SpaceEnvironment(){
   const hdr=useLoader(EXRLoader,'/hdri/NightSkyHDRI008_1K_TONEMAPPED.exr');
-  const background=useLoader(THREE.TextureLoader,'/hdri/NightSkyHDRI008_1K_TONEMAPPED.jpg');
   const scene=useThree(state=>state.scene);
   useEffect(()=>{
     hdr.mapping=THREE.EquirectangularReflectionMapping;
-    background.mapping=THREE.EquirectangularReflectionMapping;
     scene.environment=hdr;
-    scene.background=background;
+    scene.background=hdr;
     scene.environmentIntensity=0.18;
-    scene.backgroundIntensity=0.42;
+    scene.backgroundIntensity=0.65;
     return ()=>{scene.environment=null;scene.background=null;scene.environmentIntensity=1;scene.backgroundIntensity=1;};
-  },[hdr,background,scene]);
+  },[hdr,scene]);
   return null;
 }
 
