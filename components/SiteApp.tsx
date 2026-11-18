@@ -269,7 +269,7 @@ function SiteApp({ initialView }: { initialView: 'tracker' | 'dossier' | 'archiv
               const Icon = item.icon;
               return (
                 <button key={item.id} className={'nav-item ' + (view === item.id ? 'active' : '')}
-                  onClick={() => { setView(item.id); setMobileNav(false); }}>
+                  onClick={() => { navigateToView(item.id as 'tracker' | 'dossier' | 'archive'); }}>
                   <Icon size={16} /><span>{item.label}</span>
                 </button>
               );
@@ -302,7 +302,7 @@ function SiteApp({ initialView }: { initialView: 'tracker' | 'dossier' | 'archiv
                   <button className="heading-link-button" onClick={() => navigateToView('archive')}>TRANSMISSION ARCHIVE <ArrowUpRight size={11} /></button>
                 </>
               ) : (
-                <button className="heading-link-button" onClick={() => setView('tracker')}>MISSION TRACKER <ArrowUpRight size={11} /></button>
+                <button className="heading-link-button" onClick={() => navigateToView('tracker')}>MISSION TRACKER <ArrowUpRight size={11} /></button>
               )}
               <span className="utc-clock">{formatIST(now, { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })} IST</span>
               <button className="square-button" onClick={loadContributions} title="Refresh transmissions"><RefreshCw size={15} /></button>
@@ -371,7 +371,7 @@ function SiteApp({ initialView }: { initialView: 'tracker' | 'dossier' | 'archiv
                 <section className="panel message-carousel-panel">                  <div className="message-carousel-section">
                     <div className="carousel-heading">
                       <span>MESSAGES FROM EARTH</span>
-                      <button className="text-action" onClick={() => setView('archive')}>VIEW ARCHIVE <ArrowUpRight size={13} /></button>
+                      <button className="text-action" onClick={() => navigateToView('archive')}>VIEW ARCHIVE <ArrowUpRight size={13} /></button>
                     </div>
                     {activeMessage ? (
                       <div className="message-carousel-stage" aria-label="Rotating messages from the transmission archive">
