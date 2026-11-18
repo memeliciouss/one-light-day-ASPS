@@ -25,13 +25,6 @@ const TARGET_MESSAGES = Math.ceil(TARGET_KM / LIGHT_TRAVEL_KM_PER_MESSAGE);
 const fmt = (n: number) => new Intl.NumberFormat('en-IN').format(Math.round(n));
 const formatIST = (value: string | number | Date, options: Intl.DateTimeFormatOptions = {}) =>
   new Intl.DateTimeFormat('en-IN', { timeZone: 'Asia/Kolkata', ...options }).format(new Date(value));
-const remainingLabel = (ms: number) => {
-  const totalMinutes = Math.max(0, Math.ceil(ms / 60000));
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = totalMinutes % 60;
-  return hours ? hours + 'h ' + minutes + 'm' : minutes + 'm';
-};
-
 export default function Home() {
   const [view, setView] = useState('tracker');
   const [contributions, setContributions] = useState<Contribution[]>([]);
