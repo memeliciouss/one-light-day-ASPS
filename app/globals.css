@@ -857,3 +857,31 @@
 .voyager-track .uranus-marker{background:#a9dce0;border-color:#d6f4f3}
 .voyager-track .neptune-marker{background:#668fda;border-color:#b4c9f4}
 .voyager-track .kuiper-marker{background:#b8a9d1;border-color:#e0d5f0}
+
+
+/* Higher-contrast landmark dots on the Voyager distance scale */
+.voyager-track{background:#303b39!important;border:1px solid #87918a!important;overflow:visible!important}
+.voyager-track>span{background:linear-gradient(90deg,#e4b84f,#f2d78b)!important}
+.voyager-track .distance-marker{
+ width:12px!important;height:12px!important;border:2px solid #f5f2e8!important;
+ box-shadow:0 0 0 2px #17201e!important;z-index:8!important;
+}
+.voyager-track .sun-marker{background:#ffc83d!important}
+.voyager-track .uranus-marker{background:#73e0e5!important}
+.voyager-track .neptune-marker{background:#4d8dff!important}
+.voyager-track .kuiper-marker{background:#d1a6ff!important}
+.voyager-track .voyager-track-icon{filter:drop-shadow(0 0 2px #fff)!important;opacity:1!important}
+.distance-marker-legend{display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;margin:12px 0 2px}
+.distance-marker-legend span{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font:10px var(--mono);white-space:nowrap}
+.distance-marker-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;border:1px solid #f4f1e8;box-shadow:0 0 0 1px #17201e}
+.distance-marker-legend .legend-sun{background:#ffc83d}
+.distance-marker-legend .legend-uranus{background:#73e0e5}
+.distance-marker-legend .legend-neptune{background:#4d8dff}
+.distance-marker-legend .legend-kuiper{background:#d1a6ff}
+@media(max-width:700px){
+ .distance-marker-legend{gap:9px 12px;margin-top:14px}
+ .distance-marker-legend span{font-size:10px}
+ .desktop-mission-layout,.redesign-spacecraft,.redesign-spacecraft .scene-wrap{width:100%!important;max-width:100%!important;min-width:0!important}
+ .desktop-mission-layout .redesign-spacecraft .scene-wrap{height:clamp(280px,92vw,420px)!important;max-height:none!important}
+ .redesign-spacecraft canvas{width:100%!important;max-width:100%!important;display:block!important}
+}
