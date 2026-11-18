@@ -213,6 +213,7 @@ export default function Home() {
               <div className="sidebar-progress-track"><span style={{ width: collectivePct + '%' }} /></div>
               <small>{fmt(collectiveDistance)} km compiled · {contributions.length} {contributions.length === 1 ? 'message' : 'messages'}</small>
             </div>
+            <p>A message from Earth. A journey beyond.</p>
           </div>
         </aside>
 
@@ -570,7 +571,29 @@ export default function Home() {
                           <img className={item.crop} src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Voyager_Golden_Record_Cover_Explanation.svg" alt={item.label} />
                         </div>
                       ))}
-                    </article>div>
+                    </article>
+                  </div>
+                </div>
+                <a className="dossier-text-link" href="https://science.nasa.gov/mission/voyager/golden-record-cover/" target="_blank" rel="noreferrer">READ NASA’S FULL EXPLANATION OF THE GOLDEN RECORD COVER <ArrowUpRight size={13} /></a>
+              </section>
+
+              <section className="panel dossier-history">
+                <div className="panel-head"><div><span className="panel-index">03</span><h2>MISSION HISTORY</h2></div><span className="panel-tag">1977 — PRESENT</span></div>
+                <div className="timeline-summary"><strong>From launch to interstellar space.</strong><span>The milestones that shaped Voyager 1's journey.</span></div>
+                <div className="timeline">
+                  {[
+                    { year: '1977', title: 'Launch', desc: 'Voyager 1 launched on 5 September from Cape Canaveral, beginning its journey through the outer Solar System.', image: 'https://images-assets.nasa.gov/image/PIA17464/PIA17464~medium.jpg', credit: 'NASA/JPL' },
+                    { year: '1979', title: 'Jupiter flyby', desc: 'Voyager 1 returned detailed observations of Jupiter, its atmosphere, rings and moons.', image: 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia01/pia01371/PIA01371.jpg', credit: 'NASA/JPL' },
+                    { year: '1980', title: 'Saturn flyby', desc: 'Voyager 1 explored Saturn and its moon Titan before heading outwards from the planetary region.', image: 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia01/pia01969/PIA01969.jpg', credit: 'NASA/JPL' },
+                    { year: '1990', title: 'The Pale Blue Dot', desc: 'Voyager 1 turned its camera back toward home and captured Earth as a tiny point of light.', image: 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia00/pia00452/PIA00452.jpg', credit: 'NASA/JPL' },
+                    { year: '2012', title: 'Interstellar space', desc: 'Voyager 1 became the first human-made object to enter interstellar space.', image: 'https://images-assets.nasa.gov/image/PIA17046/PIA17046~medium.jpg', credit: 'NASA/JPL-Caltech' },
+                    { year: '2026', title: 'One light-day milestone', desc: 'At approximately 25.9 billion kilometres, a radio signal takes about 24 hours to travel one way.', image: 'https://images-assets.nasa.gov/image/PIA23645/PIA23645~medium.jpg', credit: 'NASA/JPL-Caltech' }
+                  ].map((item, index) => (
+                    <div className="timeline-item" key={item.year}>
+                      <div className="timeline-marker">{String(index + 1).padStart(2, '0')}</div>
+                      <div className="timeline-copy"><span>{item.year}</span><h3>{item.title}</h3><p>{item.desc}</p><small>{item.credit}</small></div>
+                      <img className="timeline-image" src={item.image} alt={item.title + ' — Voyager 1 mission'} loading="lazy" />
+                    </div>
                   ))}
                 </div>
               </section>
