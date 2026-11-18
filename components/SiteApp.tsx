@@ -433,6 +433,7 @@ function SiteApp({ initialView }: { initialView: 'tracker' | 'dossier' | 'archiv
               </div>
               <div className="transmission-list">
                 {filtered.length === 0 ? <div className="empty-state">NO MATCHING TRANSMISSIONS.</div> : paginatedContributions.map((item, index) => {
+                  const archiveIndex = contributions.findIndex(entry => entry.id === item.id);
                   const isLong = item.message.length > 145;
                   const isExpanded = expanded.includes(item.id);
                   return (
@@ -444,7 +445,7 @@ function SiteApp({ initialView }: { initialView: 'tracker' | 'dossier' | 'archiv
                         <div className="transmission-bottomline">
                           <strong>— {item.name}</strong>
                           <div className="transmission-stamp">
-                            <span className="signal-number">TRANSMISSION {String(totalContributionCount - ((archivePage - 1) * ARCHIVE_PAGE_SIZE) - index).padStart(4, '0')}</span>
+                            <span className="signal-number">TRANSMISSION {String(totalContributionCount - archiveIndex).padStart(4, '0')}</span>
                             <time>{formatIST(item.created_at, { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })} IST</time>
                           </div>
                         </div>
