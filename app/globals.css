@@ -701,3 +701,72 @@
  .message-carousel-track .message-featured .message-author{font-size:12px!important}
 }
 @media(prefers-reduced-motion:reduce){.message-carousel-track{transition:none!important}}
+
+
+/* FINAL carousel geometry: 3 equal cards, center one active, 10% side peeks */
+.message-carousel-panel .message-carousel-stage{
+ width:100%!important;
+ overflow:hidden!important;
+ padding:0 0 4px!important;
+}
+.message-carousel-panel .message-carousel-track{
+ display:flex!important;
+ flex-direction:row!important;
+ align-items:stretch!important;
+ width:300%!important;
+ max-width:none!important;
+ gap:0!important;
+ margin:0!important;
+ padding:0!important;
+ transform:translateX(-26.666667%)!important;
+ transition:transform .52s cubic-bezier(.22,.68,0,1)!important;
+}
+.message-carousel-panel .message-carousel-track.is-sliding{
+ transform:translateX(-55%)!important;
+}
+.message-carousel-panel .message-carousel-track .message-featured{
+ position:relative!important;
+ inset:auto!important;
+ display:flex!important;
+ flex:0 0 30%!important;
+ width:30%!important;
+ max-width:none!important;
+ height:174px!important;
+ min-height:174px!important;
+ margin:0 -1.666667% 0 0!important;
+ padding:17px 20px!important;
+ box-sizing:border-box!important;
+ flex-direction:column!important;
+ justify-content:space-between!important;
+ opacity:1!important;
+ transform:none!important;
+ background:#252d29!important;
+ border:1px solid #8b7951!important;
+ border-radius:2px!important;
+ box-shadow:none!important;
+}
+.message-carousel-panel .message-carousel-track .message-featured p{
+ font-size:18px!important;
+ line-height:1.5!important;
+ font-weight:600!important;
+ margin:12px 0!important;
+ text-align:left!important;
+ display:block!important;
+ overflow-wrap:anywhere!important;
+}
+.message-carousel-panel .message-carousel-track .message-featured .message-author{
+ font-size:13px!important;
+ line-height:1.4!important;
+}
+@media(max-width:700px){
+ .message-carousel-panel .message-carousel-track .message-featured{
+  height:158px!important;
+  min-height:158px!important;
+  padding:14px!important;
+ }
+ .message-carousel-panel .message-carousel-track .message-featured p{font-size:16px!important}
+ .message-carousel-panel .message-carousel-track .message-featured .message-author{font-size:12px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .message-carousel-panel .message-carousel-track{transition:none!important}
+}
