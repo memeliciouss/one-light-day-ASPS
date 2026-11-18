@@ -811,3 +811,28 @@
  .message-carousel-panel .message-carousel-slide .message-author{font-size:12px!important}
 }
 @media(prefers-reduced-motion:reduce){.message-carousel-panel .message-carousel-track{transition:none!important}}
+
+
+/* Embla loop carousel */
+.message-carousel-panel .message-carousel-stage{overflow:hidden!important;width:100%!important}
+.message-carousel-panel .embla-viewport{overflow:hidden!important;width:100%!important}
+.message-carousel-panel .embla-container{display:flex!important;touch-action:pan-y pinch-zoom; margin-left:-12px!important;align-items:stretch!important}
+.message-carousel-panel .embla-slide{flex:0 0 88%!important;min-width:0!important;padding-left:12px!important;box-sizing:border-box!important}
+.message-carousel-panel .embla-slide .message-featured{
+ position:relative!important;inset:auto!important;display:flex!important;
+ width:100%!important;max-width:none!important;height:174px!important;min-height:174px!important;
+ margin:0!important;padding:17px 20px!important;box-sizing:border-box!important;
+ flex-direction:column!important;justify-content:space-between!important;
+ opacity:1!important;transform:none!important;background:#252d29!important;
+ border:1px solid #8b7951!important;border-radius:2px!important;box-shadow:none!important;
+}
+.message-carousel-panel .embla-slide .message-featured p{font-size:18px!important;line-height:1.5!important;font-weight:600!important;margin:12px 0!important;text-align:left!important;display:block!important;overflow-wrap:anywhere!important}
+.message-carousel-panel .embla-slide .message-author{font-size:13px!important;line-height:1.4!important}
+@media(max-width:700px){
+ .message-carousel-panel .embla-slide{flex-basis:90%!important}
+ .message-carousel-panel .embla-slide .message-featured{height:158px!important;min-height:158px!important;padding:14px!important}
+ .message-carousel-panel .embla-slide .message-featured p{font-size:16px!important}
+}
+.transmission-body>p{font-size:17px!important;line-height:1.65!important}
+.transmission-body>strong{display:block!important;font-size:15px!important;line-height:1.5!important;margin-top:12px!important;color:var(--text)!important}
+@media(max-width:700px){.transmission-body>p{font-size:15px!important}.transmission-body>strong{font-size:14px!important}}
