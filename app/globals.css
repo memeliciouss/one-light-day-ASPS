@@ -1140,3 +1140,26 @@
 .glyph-detail-carousel .glyph-detail-slide img.glyph-crop-pulsar{transform-origin:22% 78%}
 .glyph-detail-carousel .glyph-detail-slide img.glyph-crop-hydrogen{transform-origin:78% 78%}
 @media(max-width:800px){.cover-decoder-points>.glyph-detail-carousel{min-height:220px}}
+
+
+/* Keep the Explore rail full-height and independently scrollable */
+.sidebar{
+  height:calc(100vh - 66px);
+  min-height:calc(100vh - 66px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  scrollbar-width:thin;
+  scrollbar-color:#69736b #171b18;
+}
+.sidebar::-webkit-scrollbar{width:7px}
+.sidebar::-webkit-scrollbar-track{background:#171b18}
+.sidebar::-webkit-scrollbar-thumb{background:#69736b;border-radius:8px}
+.sidebar-bottom{margin-top:auto;flex:0 0 auto}
+.sidebar-progress{margin:0;padding:14px 0 10px}
+.sidebar-progress-heading{align-items:flex-start;flex-wrap:nowrap}
+.sidebar-progress-heading span{max-width:68%;line-height:1.35;overflow-wrap:anywhere}
+.sidebar-progress>small{font-size:8px;line-height:1.45;overflow-wrap:anywhere}
+@media(max-width:700px){
+ .sidebar{height:auto;min-height:0;max-height:calc(100dvh - 58px);bottom:0;width:280px;overflow-y:auto}
+ .sidebar-bottom{margin-top:18px}
+}
