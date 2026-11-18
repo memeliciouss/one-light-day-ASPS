@@ -39,7 +39,6 @@ export default function Home() {
   const [activeMessageIndex, setActiveMessageIndex] = useState(0);
   const [recordImageIndex, setRecordImageIndex] = useState(0);
   const [goldenArchiveIndex, setGoldenArchiveIndex] = useState(0);
-  const [glyphDetailIndex, setGlyphDetailIndex] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center', containScroll: false, slidesToScroll: 1 });
 
   useEffect(() => {
@@ -118,10 +117,6 @@ export default function Home() {
   }, []);
   useEffect(() => {
     const timer = window.setInterval(() => setGoldenArchiveIndex(index => (index + 1) % 5), 5500);
-    return () => window.clearInterval(timer);
-  }, []);
-  useEffect(() => {
-    const timer = window.setInterval(() => setGlyphDetailIndex(index => (index + 1) % 4), 6000);
     return () => window.clearInterval(timer);
   }, []);
   const activeMessage = shuffledMessages.length ? shuffledMessages[activeMessageIndex % shuffledMessages.length] : null;
@@ -559,18 +554,6 @@ export default function Home() {
                     <article><span>03 / FIND OUR HOME</span><h4>Fourteen pulsars point to the Sun</h4><p>The lower-left star map marks the Solar System’s position relative to 14 pulsars. Their distinctive pulse periods act like cosmic reference points. They are pulsars — not quasars.</p></article>
                     <article><span>04 / UNDERSTAND THE CLOCK</span><h4>The hydrogen atom sets the unit</h4><p>The lower-right symbol shows the two lowest energy states of a neutral hydrogen atom and the transition between them. Its 21-centimetre wavelength (about 1420 MHz) provides a natural reference for time and measurement throughout the cover’s instructions.</p></article>
                     <article><span>05 / CHECK THE DATE</span><h4>A tiny radioactive clock</h4><p>The cover also carries a small ultra-pure sample of uranium-238. By comparing the remaining uranium with its decay products, a future finder could estimate how long the record has been in space.</p></article>
-                    <article className="glyph-detail-carousel" aria-label="Golden Record black and white cover diagrams">
-                      {[
-                        { crop: 'glyph-crop-play', label: 'Playback diagram' },
-                        { crop: 'glyph-crop-image', label: 'Image decoding diagram' },
-                        { crop: 'glyph-crop-pulsar', label: 'Pulsar map' },
-                        { crop: 'glyph-crop-hydrogen', label: 'Hydrogen atom diagram' }
-                      ].map((item, index) => (
-                        <div className={'glyph-detail-slide ' + (index === glyphDetailIndex ? 'active' : '')} key={item.label} aria-hidden={index !== glyphDetailIndex}>
-                          <img className={item.crop} src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Voyager_Golden_Record_Cover_Explanation.svg" alt={item.label} />
-                        </div>
-                      ))}
-                    </article>
                   </div>
                 </div>
                 <a className="dossier-text-link" href="https://science.nasa.gov/mission/voyager/golden-record-cover/" target="_blank" rel="noreferrer">READ NASA’S FULL EXPLANATION OF THE GOLDEN RECORD COVER <ArrowUpRight size={13} /></a>
