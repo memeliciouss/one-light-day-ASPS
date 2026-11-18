@@ -35,6 +35,7 @@ export default function Home() {
   const [mobileNav, setMobileNav] = useState(false);
   const backgroundAudioRef = useRef<HTMLAudioElement>(null);
   const [musicPlaying, setMusicPlaying] = useState(false);
+  const musicManuallyPausedRef = useRef(false);
   const [search, setSearch] = useState('');
   const [expanded, setExpanded] = useState<string[]>([]);
   const [now, setNow] = useState(Date.now());
@@ -177,6 +178,7 @@ export default function Home() {
     const audio = backgroundAudioRef.current;
     if (!audio) return;
     if (audio.paused) {
+      musicManuallyPausedRef.current = false;
       try {
         await audio.play();
         setMusicPlaying(true);
@@ -184,6 +186,7 @@ export default function Home() {
         setMusicPlaying(false);
       }
     } else {
+      musicManuallyPausedRef.current = true;
       audio.pause();
       setMusicPlaying(false);
     }
@@ -193,8 +196,18 @@ export default function Home() {
     const audio = backgroundAudioRef.current;
     if (!audio) return;
     audio.volume = 0.22;
+    const startMusicAfterInteraction = () => {
+      if (musicManuallyPausedRef.current || !audio.paused) return;
+      audio.play().then(() => setMusicPlaying(true)).catch(() => setMusicPlaying(false));
+    };
     audio.play().then(() => setMusicPlaying(true)).catch(() => setMusicPlaying(false));
-    return () => audio.pause();
+    window.addEventListener('pointerdown', startMusicAfterInteraction);
+    window.addEventListener('keydown', startMusicAfterInteraction);
+    return () => {
+      window.removeEventListener('pointerdown', startMusicAfterInteraction);
+      window.removeEventListener('keydown', startMusicAfterInteraction);
+      audio.pause();
+    };
   }, []);
 
   const pageTitle = nav.find(item => item.id === view)?.label || 'Mission tracker';
@@ -357,7 +370,6 @@ export default function Home() {
               <section className="panel transmission-card transmission-full-row">
                 <div className="panel-head">
                   <div><span className="panel-index">03</span><h2>SEND YOUR TRANSMISSION</h2></div>
-                  <span className="panel-tag">1-HOUR COOLDOWN</span>
                 </div>
                 <form className="submission-form redesigned-form" onSubmit={submit}>
                   <div className="single-prompt"><span>YOUR QUESTION</span><p>What message would you like to send to Voyager 1?</p></div>
