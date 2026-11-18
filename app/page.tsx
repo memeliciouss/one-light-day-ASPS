@@ -559,48 +559,18 @@ export default function Home() {
                     <article><span>03 / FIND OUR HOME</span><h4>Fourteen pulsars point to the Sun</h4><p>The lower-left star map marks the Solar System’s position relative to 14 pulsars. Their distinctive pulse periods act like cosmic reference points. They are pulsars — not quasars.</p></article>
                     <article><span>04 / UNDERSTAND THE CLOCK</span><h4>The hydrogen atom sets the unit</h4><p>The lower-right symbol shows the two lowest energy states of a neutral hydrogen atom and the transition between them. Its 21-centimetre wavelength (about 1420 MHz) provides a natural reference for time and measurement throughout the cover’s instructions.</p></article>
                     <article><span>05 / CHECK THE DATE</span><h4>A tiny radioactive clock</h4><p>The cover also carries a small ultra-pure sample of uranium-238. By comparing the remaining uranium with its decay products, a future finder could estimate how long the record has been in space.</p></article>
-                  <div className="glyph-detail-carousel" aria-label="Golden Record black and white cover diagrams">
-                    {[
-                      { crop: 'glyph-crop-play', label: 'Playback diagram' },
-                      { crop: 'glyph-crop-image', label: 'Image decoding diagram' },
-                      { crop: 'glyph-crop-pulsar', label: 'Pulsar map' },
-                      { crop: 'glyph-crop-hydrogen', label: 'Hydrogen atom diagram' }
-                    ].map((item, index) => (
-                      <article className={'glyph-detail-slide ' + (index === glyphDetailIndex ? 'active' : '')} key={item.label} aria-hidden={index !== glyphDetailIndex}>
-                        <div className="glyph-detail-image">
+                    <article className="glyph-detail-carousel" aria-label="Golden Record black and white cover diagrams">
+                      {[
+                        { crop: 'glyph-crop-play', label: 'Playback diagram' },
+                        { crop: 'glyph-crop-image', label: 'Image decoding diagram' },
+                        { crop: 'glyph-crop-pulsar', label: 'Pulsar map' },
+                        { crop: 'glyph-crop-hydrogen', label: 'Hydrogen atom diagram' }
+                      ].map((item, index) => (
+                        <div className={'glyph-detail-slide ' + (index === glyphDetailIndex ? 'active' : '')} key={item.label} aria-hidden={index !== glyphDetailIndex}>
                           <img className={item.crop} src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Voyager_Golden_Record_Cover_Explanation.svg" alt={item.label} />
                         </div>
-                      </article>
-                    ))}
-                    <div className="glyph-detail-controls">
-                      <button type="button" onClick={() => setGlyphDetailIndex(index => (index + 3) % 4)} aria-label="Previous cover diagram">←</button>
-                      <div>{[0,1,2,3].map(index => <button type="button" key={index} className={glyphDetailIndex === index ? 'active' : ''} onClick={() => setGlyphDetailIndex(index)} aria-label={'Show cover diagram ' + (index + 1)} />)}</div>
-                      <button type="button" onClick={() => setGlyphDetailIndex(index => (index + 1) % 4)} aria-label="Next cover diagram">→</button>
-                    </div>
-                  </div>
-
-                  </div>
-                </div>
-                <a className="dossier-text-link" href="https://science.nasa.gov/mission/voyager/golden-record-cover/" target="_blank" rel="noreferrer">READ NASA’S FULL EXPLANATION OF THE GOLDEN RECORD COVER <ArrowUpRight size={13} /></a>
-              </section>
-
-              <section className="panel dossier-history">
-                <div className="panel-head"><div><span className="panel-index">03</span><h2>MISSION HISTORY</h2></div><span className="panel-tag">1977 — PRESENT</span></div>
-                <div className="timeline-summary"><strong>From launch to interstellar space.</strong><span>The milestones that shaped Voyager 1's journey.</span></div>
-                <div className="timeline">
-                  {[
-                    { year: '1977', title: 'Launch', desc: 'Voyager 1 launched on 5 September from Cape Canaveral, beginning its journey through the outer Solar System.', image: 'https://images-assets.nasa.gov/image/PIA17464/PIA17464~medium.jpg', credit: 'NASA/JPL' },
-                    { year: '1979', title: 'Jupiter flyby', desc: 'Voyager 1 returned detailed observations of Jupiter, its atmosphere, rings and moons.', image: 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia01/pia01371/PIA01371.jpg', credit: 'NASA/JPL' },
-                    { year: '1980', title: 'Saturn flyby', desc: 'Voyager 1 explored Saturn and its moon Titan before heading outwards from the planetary region.', image: 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia01/pia01969/PIA01969.jpg', credit: 'NASA/JPL' },
-                    { year: '1990', title: 'The Pale Blue Dot', desc: 'Voyager 1 turned its camera back toward home and captured Earth as a tiny point of light.', image: 'https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia00/pia00452/PIA00452.jpg', credit: 'NASA/JPL' },
-                    { year: '2012', title: 'Interstellar space', desc: 'Voyager 1 became the first human-made object to enter interstellar space.', image: 'https://images-assets.nasa.gov/image/PIA17046/PIA17046~medium.jpg', credit: 'NASA/JPL-Caltech' },
-                    { year: '2026', title: 'One light-day milestone', desc: 'At approximately 25.9 billion kilometres, a radio signal takes about 24 hours to travel one way.', image: 'https://images-assets.nasa.gov/image/PIA23645/PIA23645~medium.jpg', credit: 'NASA/JPL-Caltech' }
-                  ].map((item, index) => (
-                    <div className="timeline-item" key={item.year}>
-                      <div className="timeline-marker">{String(index + 1).padStart(2, '0')}</div>
-                      <div className="timeline-copy"><span>{item.year}</span><h3>{item.title}</h3><p>{item.desc}</p><small>{item.credit}</small></div>
-                      <img className="timeline-image" src={item.image} alt={item.title + ' — Voyager 1 mission'} loading="lazy" />
-                    </div>
+                      ))}
+                    </article>div>
                   ))}
                 </div>
               </section>
