@@ -11,7 +11,7 @@ function ReferenceOrbit({radius,rotation,speed,color,opacity=0.5}:{radius:number
 }
 function NasaVoyagerModel(){
   const group=useRef<THREE.Group>(null);
-  useFrame(({clock})=>{if(group.current){group.current.rotation.y=0.38+Math.sin(clock.elapsedTime*0.22)*0.035;group.current.rotation.z=-0.22+Math.sin(clock.elapsedTime*0.16)*0.012;}});
+  useFrame(({clock})=>{if(group.current){group.current.rotation.y=1.05+Math.sin(clock.elapsedTime*0.22)*0.025;group.current.rotation.z=-0.30+Math.sin(clock.elapsedTime*0.16)*0.009;}});
   const gltf=useGLTF('/models/voyager-probe-b.glb');
   const {model,center,scale}=useMemo(()=>{
     const clone=gltf.scene.clone(true);
@@ -27,14 +27,14 @@ function NasaVoyagerModel(){
     clone.traverse(o=>{if((o as THREE.Mesh).isMesh){const m=o as THREE.Mesh;m.castShadow=true;m.receiveShadow=true;}});
     return {model:clone,center:center.toArray() as [number,number,number],scale:5.2/maxDimension};
   },[gltf.scene]);
-  return <group ref={group} scale={scale*2.65} position={[-0.22,0.55,0]} rotation={[0,0,-0.18]}><primitive object={model} position={[-center[0],-center[1],-center[2]]}/></group>;
+  return <group ref={group} scale={scale*2.45} position={[-0.42,0.48,0]} rotation={[0.10,0,-0.28]}><primitive object={model} position={[-center[0],-center[1],-center[2]]}/></group>;
 }
 export default function VoyagerScene(){
   const [modelAvailable,setModelAvailable]=useState(false);
   useEffect(()=>{fetch('/models/voyager-probe-b.glb',{method:'HEAD'}).then(r=>setModelAvailable(r.ok)).catch(()=>setModelAvailable(false));},[]);
   return <div className="scene-canvas"><Canvas camera={{position:[0,0,7.1],fov:42}} dpr={[1,1.5]} gl={{antialias:true,alpha:true}}>
     <ambientLight intensity={1.5}/><directionalLight position={[4,5,5]} intensity={2.5} color="#fff0d0"/><pointLight position={[-3,-2,3]} intensity={1.3} color="#d6a94c"/>
-    <Environment preset="night" background/><Stars radius={55} depth={30} count={1800} factor={2.2} saturation={0.15} fade speed={.08}/>
+    <Environment preset="night"/><color attach="background" args={['#070b12']}/><Stars radius={85} depth={55} count={2600} factor={2.4} saturation={0.12} fade speed={.06}/>
     <ReferenceOrbit radius={1.65} rotation={[.8,.35,.25]} speed={.025} color="#d5a84c" opacity={.72}/>
     <ReferenceOrbit radius={2.15} rotation={[1.15,-.45,-.3]} speed={-.018} color="#b0b9a9" opacity={.42}/>
     <ReferenceOrbit radius={2.55} rotation={[.45,.8,.7]} speed={.012} color="#d5a84c" opacity={.25}/>
