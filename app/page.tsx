@@ -98,12 +98,14 @@ export default function Home() {
   const collectiveDistance = contributions.length * LIGHT_TRAVEL_KM_PER_MESSAGE;
   const collectivePct = Math.min(100, (collectiveDistance / TARGET_KM) * 100);
   const shuffledMessages = useMemo(() => {
-    const items = [...contributions];
-    for (let i = items.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [items[i], items[j]] = [items[j], items[i]];
-    }
-    return items;
+    const stableHash = (value: string) => {
+      let hash = 2166136261;
+      for (let i = 0; i < value.length; i++) hash = Math.imul(hash ^ value.charCodeAt(i), 16777619);
+      return hash >>> 0;
+    };
+    return [...contributions].sort((a, b) =>
+      stableHash(a.id + a.created_at) - stableHash(b.id + b.created_at)
+    );
   }, [contributions]);
   const filtered = useMemo(
     () => contributions.filter(c => (c.name + ' ' + c.message).toLowerCase().includes(search.toLowerCase())),
