@@ -407,8 +407,8 @@ export default function Home() {
                 </div>
                 <div className="golden-archive-carousel">
                   {[
-                    { title: 'The Golden Record', credit: 'NASA / JPL-CALTECH', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-record-cover-446eb9.jpg?w=1200', alt: 'The Golden Record protective cover' },
-                    { title: 'The record on display', credit: 'NASA / JPL-CALTECH', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-gold-record-display.jpg?w=1200', alt: 'The Golden Record displayed for documentation' },
+                    { title: 'The Golden Record', credit: 'NASA / JPL-CALTECH', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-record-cover-446eb9.jpg', alt: 'The Golden Record protective cover' },
+                    { title: 'The record on display', credit: 'NASA / JPL-CALTECH', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-phonograph-record-5-10-1977.jpg', alt: 'The Golden Record displayed for documentation' },
                     { title: 'Recording the message', credit: 'NASA ARCHIVE', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-recording-session-6-29-77-30885251025-o.jpg', alt: 'Archival photograph from the Golden Record recording sessions' },
                     { title: 'A message being recorded', credit: 'NASA ARCHIVE', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-recording-session-6-29-77-30249865513-o.jpg', alt: 'Archival photograph from the Golden Record recording sessions' },
                     { title: 'The voices of Earth', credit: 'NASA ARCHIVE', image: 'https://science.nasa.gov/wp-content/uploads/2024/03/voyager-recording-session-6-29-77-30796968361-o.jpg', alt: 'Archival photograph from the Golden Record recording sessions' }
