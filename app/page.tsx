@@ -220,7 +220,8 @@ export default function Home() {
           </div>
 
           {view === 'tracker' && (
-            <div className="tracker-redesign">\n              <div className="desktop-mission-layout">
+            <div className="tracker-redesign">
+              <div className="desktop-mission-layout">
               <section className="panel spacecraft-panel redesign-spacecraft">
                 <div className="panel-head">
                   <div><span className="panel-index">01</span><h2>VOYAGER 1</h2></div>
@@ -244,7 +245,7 @@ export default function Home() {
                       <div><span>OUR COMPILED DISTANCE</span><strong>{collectivePct.toFixed(1)}%</strong></div>
                       <small>{contributions.length} / {TARGET_MESSAGES} messages</small>
                     </div>
-                    <div className="collective-track signal-track"><span style={{ width: collectivePct + '%' }} /><span className="signal-marker" style={{ left: collectivePct + '%' }}><Send size={17} strokeWidth={2.5} /></span></div>
+                    <div className="collective-track signal-track"><span style={{ width: collectivePct + '%' }} /></div>
                     <div className="progress-foot">
                       <span>{fmt(collectiveDistance)} km represented</span>
                       <span>GOAL · {fmt(TARGET_KM)} km</span>
@@ -291,10 +292,10 @@ export default function Home() {
                   <span className="panel-tag">1-HOUR COOLDOWN</span>
                 </div>
                 <form className="submission-form redesigned-form" onSubmit={submit}>
-                  <div className="single-prompt"><span>YOUR QUESTION</span><p>What message would you like to send from Mars to Voyager 1?</p></div>
+                  <div className="single-prompt"><span>YOUR QUESTION</span><p>What message would you like to send to Voyager 1?</p></div>
                   <div className="transmission-form-grid">
                     <label className="field-label">YOUR NAME<input value={name} onChange={e => setName(e.target.value)} maxLength={40} placeholder="Name or callsign" required /></label>
-                    <label className="field-label">YOUR MESSAGE <span>{message.length}/300</span><textarea value={message} onChange={e => setMessage(e.target.value)} maxLength={300} rows={3} placeholder="A message from Mars…" required /></label>
+                    <label className="field-label">YOUR MESSAGE <span>{message.length}/300</span><textarea value={message} onChange={e => setMessage(e.target.value)} maxLength={300} rows={3} placeholder="Write your message…" required /></label>
                   </div>
                   <div className="form-bottom redesigned-form-bottom">
                     <span>{cooldownUntil > now ? 'Next transmission in ' + remainingLabel(cooldownUntil - now) : 'One transmission per hour, per browser.'}</span>
