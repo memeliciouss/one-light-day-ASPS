@@ -213,7 +213,6 @@ export default function Home() {
               <div className="sidebar-progress-track"><span style={{ width: collectivePct + '%' }} /></div>
               <small>{fmt(collectiveDistance)} km compiled · {contributions.length} {contributions.length === 1 ? 'message' : 'messages'}</small>
             </div>
-            <p>A message from Earth. A journey beyond.</p>
           </div>
         </aside>
 
