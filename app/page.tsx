@@ -37,6 +37,7 @@ export default function Home() {
   const [expanded, setExpanded] = useState<string[]>([]);
   const [now, setNow] = useState(Date.now());
   const [activeMessageIndex, setActiveMessageIndex] = useState(0);
+  const [recordImageIndex, setRecordImageIndex] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center', containScroll: false, slidesToScroll: 1 });
 
   useEffect(() => {
@@ -244,7 +245,7 @@ export default function Home() {
                   <div className="journey-progress-block">
                     <div className="progress-heading">
                       <div><span>OUR COMPILED DISTANCE</span><strong>{collectivePct.toFixed(1)}%</strong></div>
-                      <small>{contributions.length} / {TARGET_MESSAGES} messages</small>
+                      <small>{contributions.length} messages received</small>
                     </div>
                     <div className="collective-track signal-track"><span style={{ width: collectivePct + '%' }} /></div>
                     <div className="progress-foot">
@@ -393,6 +394,9 @@ export default function Home() {
                     <div><strong>55</strong><span>LANGUAGES</span></div>
                     <div><strong>90 min</strong><span>OF MUSIC</span></div>
                   </div>
+                  <a className="spotify-record-link" href="https://open.spotify.com/album/1DPVwnfFe2VdRCPXKzou6q" target="_blank" rel="noreferrer">
+                    <span>LISTEN ON SPOTIFY</span><strong>The Golden Record: Greetings and Sounds of the Earth</strong><ArrowUpRight size={15} />
+                  </a>
                 </div>
               </section>
 
@@ -403,19 +407,19 @@ export default function Home() {
                 </div>
                 <div className="record-content-grid">
                   <a className="record-content-card record-sounds" href="https://science.nasa.gov/mission/voyager/golden-record-contents/sounds/" target="_blank" rel="noreferrer">
-                    <img src="https://images-assets.nasa.gov/image/PIA17046/PIA17046~medium.jpg" alt="Artist's concept of Voyager travelling through interstellar space" loading="lazy" />
+                    <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia17/pia17046/PIA17046.jpg?crop=faces%2Cfocalpoint&fit=clip&h=600&w=900" alt="Artist's concept of Voyager travelling through interstellar space" loading="lazy" />
                     <span className="record-card-index">01 / LISTEN</span><h4>The sounds of Earth</h4>
                     <p>Whales, thunder, birds, footsteps, laughter and the sounds of a living planet.</p>
                     <b>EXPLORE THE SOUNDS <ArrowUpRight size={12} /></b>
                   </a>
                   <a className="record-content-card record-music" href="https://science.nasa.gov/mission/voyager/golden-record-contents/music/" target="_blank" rel="noreferrer">
-                    <img src="https://images-assets.nasa.gov/image/PIA23645/PIA23645~medium.jpg" alt="Voyager spacecraft in deep space" loading="lazy" />
+                    <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia23/pia23645/PIA23645.jpg?crop=faces%2Cfocalpoint&fit=clip&h=600&w=900" alt="Voyager spacecraft in deep space" loading="lazy" />
                     <span className="record-card-index">02 / MUSIC</span><h4>A playlist for the universe</h4>
                     <p>From Bach and Mozart to Chuck Berry and Indian classical music — a snapshot of music across cultures.</p>
                     <b>EXPLORE THE MUSIC <ArrowUpRight size={12} /></b>
                   </a>
                   <a className="record-content-card record-greetings" href="https://science.nasa.gov/mission/voyager/golden-record-contents/greetings/" target="_blank" rel="noreferrer">
-                    <img src="https://images-assets.nasa.gov/image/PIA17464/PIA17464~medium.jpg" alt="Voyager spacecraft being prepared for its journey" loading="lazy" />
+                    <img src="https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia17/pia17464/PIA17464.jpg?crop=faces%2Cfocalpoint&fit=clip&h=600&w=900" alt="Voyager spacecraft being prepared for its journey" loading="lazy" />
                     <span className="record-card-index">03 / HELLO</span><h4>55 ways to say hello</h4>
                     <p>Greetings from people on Earth, in languages from around the world — including Hindi and Bengali.</p>
                     <b>HEAR THE GREETINGS <ArrowUpRight size={12} /></b>
@@ -429,10 +433,24 @@ export default function Home() {
                   <h3>Earth, as we chose to introduce it.</h3>
                   <p>The record includes 115 images: from mathematics and biology to people, landscapes and everyday life.</p>
                 </div>
-                <div className="record-image-strip">
-                  <a href="https://science.nasa.gov/mission/voyager/golden-record-contents/images/" target="_blank" rel="noreferrer"><img src="https://images-assets.nasa.gov/image/PIA00452/PIA00452~medium.jpg" alt="The Pale Blue Dot, Earth seen from Voyager 1" loading="lazy" /><span>OUR PALE BLUE DOT</span></a>
-                  <a href="https://science.nasa.gov/mission/voyager/golden-record-contents/images/" target="_blank" rel="noreferrer"><img src="https://images-assets.nasa.gov/image/PIA01371/PIA01371~medium.jpg" alt="Jupiter as seen by Voyager 1" loading="lazy" /><span>A WORLD IN OUR NEIGHBOURHOOD</span></a>
-                  <a href="https://science.nasa.gov/mission/voyager/golden-record-contents/images/" target="_blank" rel="noreferrer"><img src="https://images-assets.nasa.gov/image/PIA01969/PIA01969~medium.jpg" alt="Saturn observed by Voyager 1" loading="lazy" /><span>WORLDS BEYOND HOME</span></a>
+                <div className="voyager-gallery-carousel">
+                  {[
+                    { title: 'The Pale Blue Dot', detail: 'Earth, seen from 6 billion kilometres away · 1990', image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia23/pia23645/PIA23645.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1000&w=1800', credit: 'NASA / JPL-CALTECH' },
+                    { title: 'Jupiter', detail: 'Voyager 1’s first close-up look at the giant planet · 1979', image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia01/pia01371/PIA01371.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1000&w=1800', credit: 'NASA / JPL' },
+                    { title: 'Saturn', detail: 'A world of rings, captured during the 1980 flyby', image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia01/pia01969/PIA01969.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1000&w=1800', credit: 'NASA / JPL' },
+                    { title: 'Jupiter in detail', detail: 'Early images from Voyager 1’s approach to Jupiter · 1978', image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia00/pia00454/PIA00454.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1000&w=1800', credit: 'NASA / JPL' }
+                  ].map((item, index) => (
+                    <article className={'voyager-gallery-slide ' + (index === recordImageIndex ? 'active' : '')} key={item.title} aria-hidden={index !== recordImageIndex}>
+                      <a href={item.image} target="_blank" rel="noreferrer" tabIndex={index === recordImageIndex ? 0 : -1}>
+                        <img src={item.image} alt={item.title + ' — Voyager mission image'} loading={index === recordImageIndex ? 'eager' : 'lazy'} />
+                      </a>
+                      <div className="voyager-gallery-caption"><span>{item.credit}</span><h4>{item.title}</h4><p>{item.detail}</p></div>
+                    </article>
+                  ))}
+                  <div className="voyager-gallery-controls">
+                    <span>{String(recordImageIndex + 1).padStart(2, '0')} <i>/</i> 04</span>
+                    <div><button type="button" onClick={() => setRecordImageIndex(index => (index + 3) % 4)} aria-label="Previous Voyager image">←</button><button type="button" onClick={() => setRecordImageIndex(index => (index + 1) % 4)} aria-label="Next Voyager image">→</button></div>
+                  </div>
                 </div>
                 <a className="dossier-text-link" href="https://science.nasa.gov/mission/voyager/golden-record-contents/images/" target="_blank" rel="noreferrer">BROWSE NASA’S GOLDEN RECORD IMAGE COLLECTION <ArrowUpRight size={13} /></a>
                 <p className="record-image-note">NASA’s online gallery displays a subset of the images; some original photographs are copyright-protected.</p>
