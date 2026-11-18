@@ -395,7 +395,7 @@ export default function Home() {
                     <div><strong>90 min</strong><span>OF MUSIC</span></div>
                   </div>
                   <a className="spotify-record-link" href="https://open.spotify.com/album/1DPVwnfFe2VdRCPXKzou6q" target="_blank" rel="noreferrer">
-                    <span>LISTEN ON SPOTIFY</span><strong>The Golden Record: Greetings and Sounds of the Earth</strong><ArrowUpRight size={15} />
+                    <span>LISTEN ON SPOTIFY</span><strong>The Golden Record: Greetings and Sounds of the Earth <small>4-track greetings and sounds EP · NASA’s music selection is linked separately below</small></strong><ArrowUpRight size={15} />
                   </a>
                 </div>
               </section>
@@ -430,8 +430,8 @@ export default function Home() {
               <section className="record-image-section">
                 <div className="dossier-section-heading">
                   <span className="dossier-kicker">A GALLERY FROM OUR WORLD</span>
-                  <h3>Earth, as we chose to introduce it.</h3>
-                  <p>The record includes 115 images: from mathematics and biology to people, landscapes and everyday life.</p>
+                  <h3>Voyager’s view of the outer worlds.</h3>
+                  <p>A selection of iconic photographs returned by Voyager 1 — from Jupiter and Saturn to the Pale Blue Dot. The Golden Record’s separate collection of 115 images is available in NASA’s archive below.</p>
                 </div>
                 <div className="voyager-gallery-carousel">
                   {[
