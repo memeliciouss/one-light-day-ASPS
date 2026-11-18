@@ -202,7 +202,14 @@ export default function Home() {
               );
             })}
           </div>
-          <div className="sidebar-bottom"><p>A message from Earth. A journey beyond.</p></div>
+          <div className="sidebar-bottom">
+            <div className="sidebar-progress">
+              <div className="sidebar-progress-heading"><span>ONE LIGHT-DAY</span><strong>{Math.min(100, (estimatedDistance / TARGET_KM) * 100).toFixed(2)}%</strong></div>
+              <div className="sidebar-progress-track"><span style={{ width: Math.min(100, (estimatedDistance / TARGET_KM) * 100) + '%' }} /></div>
+              <small>{fmt(estimatedDistance)} / {fmt(TARGET_KM)} km</small>
+            </div>
+            <p>A message from Earth. A journey beyond.</p>
+          </div>
         </aside>
 
         <section className="main-column">
@@ -278,6 +285,7 @@ export default function Home() {
                       <span><i className="legend-sun" />Sun</span>
                       <span><i className="legend-uranus" />Uranus</span>
                       <span><i className="legend-neptune" />Neptune</span>
+                      <span><i className="legend-pluto" />Pluto</span>
                       <span><i className="legend-kuiper" />Kuiper Belt</span>
                     </div>
                     <div className="progress-foot">
@@ -528,6 +536,28 @@ export default function Home() {
                   </div>
                   <div className="journey-caption"><span>THE SUN</span><span>VOYAGER 1 · {voyagerAU.toFixed(1)} AU</span><span>OUTWARD</span></div>
                 </div>
+              </section>
+
+              <section className="golden-cover-decoder">
+                <div className="dossier-section-heading">
+                  <span className="dossier-kicker">A MESSAGE WITHIN THE MESSAGE</span>
+                  <h3>How to read the Golden Record.</h3>
+                  <p>The cover is more than decoration. It is a set of instructions written in mathematics and physics — designed for someone who may never have seen a record player, or even a human.</p>
+                </div>
+                <div className="cover-decoder-layout">
+                  <a className="cover-decoder-image" href="https://science.nasa.gov/mission/voyager/golden-record-cover/" target="_blank" rel="noreferrer">
+                    <img src="https://science.nasa.gov/wp-content/uploads/2024/03/voyager-record-cover-446eb9.jpg" alt="The Voyager Golden Record cover with its etched decoding diagrams" loading="lazy" />
+                    <span>NASA’S GUIDE TO THE COVER <ArrowUpRight size={12} /></span>
+                  </a>
+                  <div className="cover-decoder-points">
+                    <article><span>01 / PLAY THE RECORD</span><h4>A universal set of instructions</h4><p>The upper-left diagram shows the stylus and how it sits in the record’s groove. Binary numbers give the playback speed — one rotation every 3.6 seconds — and indicate that the record is played from the outside inward.</p></article>
+                    <article><span>02 / REBUILD THE PICTURES</span><h4>Turn sound into images</h4><p>The upper-right diagrams explain how to convert the recorded signals into picture lines. They describe the scan pattern and timing; a circle is included as a test image so the receiver can check the picture’s proportions.</p></article>
+                    <article><span>03 / FIND OUR HOME</span><h4>Fourteen pulsars point to the Sun</h4><p>The lower-left star map marks the Solar System’s position relative to 14 pulsars. Their distinctive pulse periods act like cosmic reference points. They are pulsars — not quasars.</p></article>
+                    <article><span>04 / UNDERSTAND THE CLOCK</span><h4>The hydrogen atom sets the unit</h4><p>The lower-right symbol shows the two lowest energy states of a neutral hydrogen atom and the transition between them. Its 21-centimetre wavelength (about 1420 MHz) provides a natural reference for time and measurement throughout the cover’s instructions.</p></article>
+                    <article><span>05 / CHECK THE DATE</span><h4>A tiny radioactive clock</h4><p>The cover also carries a small ultra-pure sample of uranium-238. By comparing the remaining uranium with its decay products, a future finder could estimate how long the record has been in space.</p></article>
+                  </div>
+                </div>
+                <a className="dossier-text-link" href="https://science.nasa.gov/mission/voyager/golden-record-cover/" target="_blank" rel="noreferrer">READ NASA’S FULL EXPLANATION OF THE GOLDEN RECORD COVER <ArrowUpRight size={13} /></a>
               </section>
 
               <section className="panel dossier-history">
