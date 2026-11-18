@@ -333,3 +333,42 @@
  .single-prompt p{font-size:16px}
  .message-marquee-item{width:235px;flex-basis:235px}
 }
+
+
+/* Final spacing, navigation and media hierarchy corrections */
+.redesigned-workspace .sidebar{position:sticky;top:0;align-self:start;height:100vh;max-height:100vh;overflow-y:auto}
+.redesigned-workspace .top-society{font-size:12px!important;letter-spacing:.08em;font-weight:700;white-space:nowrap}
+.desktop-mission-layout{align-items:start!important}
+.desktop-mission-layout>.redesign-spacecraft{align-self:start!important;height:auto!important}
+.desktop-mission-layout .redesign-spacecraft .scene-wrap{height:clamp(350px,37vw,500px)!important;max-height:500px!important}
+.desktop-mission-layout .redesign-spacecraft .scene-canvas{height:100%!important}
+.mission-side-stack{align-self:start}
+.message-carousel-panel{overflow:hidden}
+.message-carousel-panel .message-carousel-section{margin:0;border-top:0;padding:13px 0 9px}
+.message-carousel-panel .carousel-heading{padding-bottom:11px}
+.message-carousel-panel .message-marquee-track{animation:message-marquee 24s linear infinite!important;will-change:transform}
+.message-carousel-panel .message-marquee-item{background:linear-gradient(145deg,#29251b,#1b2427 70%,#1d221e);border-color:#78613a;box-shadow:0 5px 18px #0005;min-height:118px}
+.message-carousel-panel .message-marquee-item:nth-child(3n){transform:translateY(3px)}
+.message-carousel-panel .message-marquee-item:nth-child(3n + 1){transform:translateY(-2px)}
+.message-carousel-panel .message-marquee-item p{font-size:13px}
+.message-carousel-panel .message-marquee-item span{font-size:10px}
+.signal-track,.icon-track{position:relative;overflow:visible}
+.signal-track>span:first-child{position:relative;z-index:1}
+.signal-marker{position:absolute;z-index:3;top:50%;transform:translate(-50%,-50%);width:27px;height:27px;border-radius:50%;display:grid;place-items:center;color:#f2ca70;background:#24251f;border:1px solid #d9b45e;box-shadow:0 0 0 4px #d9b45e25,0 0 16px #d9b45e70;transition:left .45s ease}
+.voyager-track-icon{position:absolute;z-index:3;right:-14px;top:50%;transform:translateY(-50%);width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 0 5px #d7c18b99);pointer-events:none}
+.voyager-reference .progress-heading>div>span{font-size:10px}
+.dossier-track{overflow:visible}
+.voyager-image-marker{width:54px;height:54px;background:transparent;border:0;box-shadow:none}
+.voyager-image-marker img{width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 0 5px #d7c18b99)}
+@media(max-width:1059px){
+ .redesigned-workspace .sidebar{position:fixed;height:auto;max-height:none;top:58px}
+ .desktop-mission-layout .redesign-spacecraft .scene-wrap{height:clamp(280px,55vw,420px)!important}
+}
+@media(max-width:700px){
+ .redesigned-workspace .top-society{font-size:8px!important;white-space:normal;text-align:right;max-width:145px;line-height:1.35}
+ .voyager-track-icon{width:34px;height:34px;right:-12px}
+ .voyager-image-marker{width:44px;height:44px}
+ .voyager-image-marker img{width:48px;height:48px}
+ .message-carousel-panel .message-marquee-track{animation-duration:30s!important}
+}
+@media(prefers-reduced-motion:reduce){.message-carousel-panel .message-marquee-track{animation:none!important}}
