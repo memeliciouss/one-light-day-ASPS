@@ -38,7 +38,7 @@ export default function Home() {
     const { data,error } = await supabase.from('contributions').select('*').order('created_at',{ascending:false}).limit(200);
     if (!error && data) { setContributions(data as Contribution[]); }
   },[]);
-  useEffect(() => { loadContributions(); if(!supabase) return; const channel=supabase.channel('contribution-feed').on('postgres_changes',{event:'INSERT',schema:'public',table:'contributions'},payload=>setContributions(prev=>[payload.new as Contribution,...prev].slice(0,200))).on('postgres_changes',{event:'DELETE',schema:'public',table:'contributions'},payload=>setContributions(prev=>prev.filter(item=>item.id!==String((payload.old as {id?:string}).id)))).subscribe(); return ()=>{supabase.removeChannel(channel);}; },[loadContributions]);
+  useEffect(() => { loadContributions(); const client=supabase; if(!client) return; const channel=client.channel('contribution-feed').on('postgres_changes',{event:'INSERT',schema:'public',table:'contributions'},payload=>setContributions(prev=>[payload.new as Contribution,...prev].slice(0,200))).on('postgres_changes',{event:'DELETE',schema:'public',table:'contributions'},payload=>setContributions(prev=>prev.filter(item=>item.id!==String((payload.old as {id?:string}).id)))).subscribe(); return ()=>{client.removeChannel(channel);}; },[loadContributions]);
 
   const estimatedDistance = Math.min(TARGET_KM, REFERENCE_DISTANCE_KM + Math.max(0,(now-REFERENCE_AT)/1000)*SPEED_KM_S);
   const lightSeconds = estimatedDistance / LIGHT_SPEED_KM_S;
