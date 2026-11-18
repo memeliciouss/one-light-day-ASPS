@@ -213,7 +213,6 @@ export default function Home() {
               <div className="sidebar-progress-track"><span style={{ width: collectivePct + '%' }} /></div>
               <small>{fmt(collectiveDistance)} km compiled · {contributions.length} {contributions.length === 1 ? 'message' : 'messages'}</small>
             </div>
-            <p>A message from Earth. A journey beyond.</p>
           </div>
         </aside>
 
@@ -560,26 +559,26 @@ export default function Home() {
                     <article><span>03 / FIND OUR HOME</span><h4>Fourteen pulsars point to the Sun</h4><p>The lower-left star map marks the Solar System’s position relative to 14 pulsars. Their distinctive pulse periods act like cosmic reference points. They are pulsars — not quasars.</p></article>
                     <article><span>04 / UNDERSTAND THE CLOCK</span><h4>The hydrogen atom sets the unit</h4><p>The lower-right symbol shows the two lowest energy states of a neutral hydrogen atom and the transition between them. Its 21-centimetre wavelength (about 1420 MHz) provides a natural reference for time and measurement throughout the cover’s instructions.</p></article>
                     <article><span>05 / CHECK THE DATE</span><h4>A tiny radioactive clock</h4><p>The cover also carries a small ultra-pure sample of uranium-238. By comparing the remaining uranium with its decay products, a future finder could estimate how long the record has been in space.</p></article>
+                  <div className="glyph-detail-carousel" aria-label="Golden Record black and white cover diagrams">
+                    {[
+                      { crop: 'glyph-crop-play', label: 'Playback diagram' },
+                      { crop: 'glyph-crop-image', label: 'Image decoding diagram' },
+                      { crop: 'glyph-crop-pulsar', label: 'Pulsar map' },
+                      { crop: 'glyph-crop-hydrogen', label: 'Hydrogen atom diagram' }
+                    ].map((item, index) => (
+                      <article className={'glyph-detail-slide ' + (index === glyphDetailIndex ? 'active' : '')} key={item.label} aria-hidden={index !== glyphDetailIndex}>
+                        <div className="glyph-detail-image">
+                          <img className={item.crop} src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Voyager_Golden_Record_Cover_Explanation.svg" alt={item.label} />
+                        </div>
+                      </article>
+                    ))}
+                    <div className="glyph-detail-controls">
+                      <button type="button" onClick={() => setGlyphDetailIndex(index => (index + 3) % 4)} aria-label="Previous cover diagram">←</button>
+                      <div>{[0,1,2,3].map(index => <button type="button" key={index} className={glyphDetailIndex === index ? 'active' : ''} onClick={() => setGlyphDetailIndex(index)} aria-label={'Show cover diagram ' + (index + 1)} />)}</div>
+                      <button type="button" onClick={() => setGlyphDetailIndex(index => (index + 1) % 4)} aria-label="Next cover diagram">→</button>
+                    </div>
                   </div>
-                </div>
-                <div className="glyph-detail-carousel" aria-label="Close-up details of the Golden Record cover">
-                  {[
-                    { title: 'How to play the record', note: 'The stylus, playback direction and 3.6-second rotation are encoded in binary.', crop: 'glyph-crop-play' },
-                    { title: 'How to rebuild an image', note: 'Signal lines and timing describe how to reconstruct the pictures, line by line.', crop: 'glyph-crop-image' },
-                    { title: 'Where Earth is', note: 'Fourteen pulsars and their pulse periods form a map pointing back to the Sun.', crop: 'glyph-crop-pulsar' },
-                    { title: 'A universal clock', note: 'The hydrogen atom transition defines a shared unit of time and measurement.', crop: 'glyph-crop-hydrogen' }
-                  ].map((item, index) => (
-                    <article className={'glyph-detail-slide ' + (index === glyphDetailIndex ? 'active' : '')} key={item.title} aria-hidden={index !== glyphDetailIndex}>
-                      <div className="glyph-detail-image">
-                        <img className={item.crop} src="https://science.nasa.gov/wp-content/uploads/2024/03/voyager-record-cover-446eb9.jpg" alt={item.title + ' engraved diagram on the Golden Record cover'} />
-                      </div>
-                      <div className="glyph-detail-copy"><span>ETCHING DETAIL · 0{index + 1} / 04</span><h4>{item.title}</h4><p>{item.note}</p></div>
-                    </article>
-                  ))}
-                  <div className="glyph-detail-controls">
-                    <button type="button" onClick={() => setGlyphDetailIndex(index => (index + 3) % 4)} aria-label="Previous cover detail">←</button>
-                    <div>{[0,1,2,3].map(index => <button type="button" key={index} className={glyphDetailIndex === index ? 'active' : ''} onClick={() => setGlyphDetailIndex(index)} aria-label={'Show cover detail ' + (index + 1)} />)}</div>
-                    <button type="button" onClick={() => setGlyphDetailIndex(index => (index + 1) % 4)} aria-label="Next cover detail">→</button>
+
                   </div>
                 </div>
                 <a className="dossier-text-link" href="https://science.nasa.gov/mission/voyager/golden-record-cover/" target="_blank" rel="noreferrer">READ NASA’S FULL EXPLANATION OF THE GOLDEN RECORD COVER <ArrowUpRight size={13} /></a>
