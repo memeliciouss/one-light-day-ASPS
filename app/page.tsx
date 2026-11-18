@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { FormEvent } from 'react';
 import dynamic from 'next/dynamic';
 import { Activity, ArrowUpRight, Menu, MessageCircle, RadioTower, RefreshCw, Satellite, Search, Send, X } from 'lucide-react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { Contribution } from '@/lib/prompts';
 import { supabase } from '@/lib/supabase';
 
@@ -43,7 +44,7 @@ export default function Home() {
   const [now, setNow] = useState(Date.now());
   const [cooldownUntil, setCooldownUntil] = useState(0);
   const [activeMessageIndex, setActiveMessageIndex] = useState(0);
-  const [messageCarouselSliding, setMessageCarouselSliding] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center', containScroll: false, slidesToScroll: 1 });
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
@@ -110,18 +111,17 @@ export default function Home() {
     );
   }, [contributions]);
   useEffect(() => {
-    if (shuffledMessages.length < 2) { setActiveMessageIndex(0); return; }
-    const rotation = window.setInterval(() => setMessageCarouselSliding(true), 3000);
-    return () => window.clearInterval(rotation);
-  }, [shuffledMessages.length]);
+    if (!emblaApi) return;
+    const syncSelected = () => setActiveMessageIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on('select', syncSelected);
+    syncSelected();
+    return () => { emblaApi.off('select', syncSelected); };
+  }, [emblaApi]);
   useEffect(() => {
-    if (!messageCarouselSliding || shuffledMessages.length < 2) return;
-    const finishSlide = window.setTimeout(() => {
-      setActiveMessageIndex(index => (index + 1) % shuffledMessages.length);
-      setMessageCarouselSliding(false);
-    }, 520);
-    return () => window.clearTimeout(finishSlide);
-  }, [messageCarouselSliding, shuffledMessages.length]);
+    if (!emblaApi || shuffledMessages.length < 2) return;
+    const autoplay = window.setInterval(() => emblaApi.scrollNext(), 3000);
+    return () => window.clearInterval(autoplay);
+  }, [emblaApi, shuffledMessages.length]);
   const activeMessage = shuffledMessages.length ? shuffledMessages[activeMessageIndex % shuffledMessages.length] : null;
   const filtered = useMemo(
     () => contributions.filter(c => (c.name + ' ' + c.message).toLowerCase().includes(search.toLowerCase())),
@@ -284,25 +284,22 @@ export default function Home() {
                       <button className="text-action" onClick={() => setView('archive')}>VIEW ARCHIVE <ArrowUpRight size={13} /></button>
                     </div>
                     {activeMessage ? (
-                      <div className="message-carousel-stage" aria-live="polite" aria-label="Rotating messages from the transmission archive">
-                        <div className={'message-carousel-track' + (messageCarouselSliding ? ' is-sliding' : '')}>
-                          {[-1, 0, 1].map(offset => {
-                            const index = (activeMessageIndex + offset + shuffledMessages.length) % shuffledMessages.length;
-                            const item = shuffledMessages[index];
-                            return (
-                              <div className="message-carousel-slide" key={item.id}>
+                      <div className="message-carousel-stage" aria-label="Rotating messages from the transmission archive">
+                        <div className="embla-viewport" ref={emblaRef}>
+                          <div className="embla-container">
+                            {shuffledMessages.map((item, index) => (
+                              <div className="embla-slide" key={item.id}>
                                 <article className="message-marquee-item message-featured">
                                   <div className="message-featured-top"><MessageCircle size={15} /><span>TRANSMISSION {String(index + 1).padStart(2, '0')} / {String(shuffledMessages.length).padStart(2, '0')}</span></div>
                                   <p>“{item.message}”</p>
                                   <span className="message-author">— {item.name}</span>
                                 </article>
                               </div>
-                            );
-                          })}
+                            ))}
+                          </div>
                         </div>
                         <div className="message-carousel-dots" aria-hidden="true">{shuffledMessages.slice(0, Math.min(shuffledMessages.length, 8)).map((item, index) => <i key={item.id} className={index === activeMessageIndex % Math.min(shuffledMessages.length, 8) ? 'active' : ''} />)}</div>
-                      </div>
-                    ) : (
+                      </div>                    ) : (
                       <div className="carousel-empty">Your message could be the first one here.</div>
                     )}
                   </div></section>
@@ -355,7 +352,6 @@ export default function Home() {
                       <div className="transmission-body">
                         <div className="signal-number">TRANSMISSION {String(contributions.length - index).padStart(4, '0')}</div>
                         <div className="transmission-meta">
-                          <span>MESSAGE TO VOYAGER 1</span>
                           <time>{formatIST(item.created_at, { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })} IST</time>
                         </div>
                         <p className={!isExpanded && isLong ? 'clamped' : ''}>“{item.message}”</p>
