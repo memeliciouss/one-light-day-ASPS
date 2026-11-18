@@ -1,5 +1,7 @@
 # ONE LIGHT-DAY — ASPS, PEC
 
+[one-light-day-asps.vercel.app/](https://one-light-day-asps.vercel.app/)
+
 A Next.js experience celebrating Voyager 1's one-light-day milestone and collecting short messages from students for a shared digital Golden Record.
 
 <img width="653" height="960" alt="One Light Day - ASPS" src="https://github.com/user-attachments/assets/50041753-4f6a-4330-91ec-6b4975925953" />
