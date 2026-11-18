@@ -290,11 +290,13 @@ export default function Home() {
                             const index = (activeMessageIndex + offset + shuffledMessages.length) % shuffledMessages.length;
                             const item = shuffledMessages[index];
                             return (
-                              <article className="message-marquee-item message-featured" key={item.id}>
-                                <div className="message-featured-top"><MessageCircle size={15} /><span>TRANSMISSION {String(index + 1).padStart(2, '0')} / {String(shuffledMessages.length).padStart(2, '0')}</span></div>
-                                <p>“{item.message}”</p>
-                                <span className="message-author">— {item.name}</span>
-                              </article>
+                              <div className="message-carousel-slide" key={item.id}>
+                                <article className="message-marquee-item message-featured">
+                                  <div className="message-featured-top"><MessageCircle size={15} /><span>TRANSMISSION {String(index + 1).padStart(2, '0')} / {String(shuffledMessages.length).padStart(2, '0')}</span></div>
+                                  <p>“{item.message}”</p>
+                                  <span className="message-author">— {item.name}</span>
+                                </article>
+                              </div>
                             );
                           })}
                         </div>
@@ -349,11 +351,11 @@ export default function Home() {
                   const isExpanded = expanded.includes(item.id);
                   return (
                     <article className="transmission" key={item.id}>
-                      <div className="profile-avatar">{item.name.trim().slice(0, 2).toUpperCase()}</div>
+                      <div className="profile-avatar"><MessageCircle size={17} strokeWidth={1.8} /></div>
                       <div className="transmission-body">
                         <div className="signal-number">TRANSMISSION {String(contributions.length - index).padStart(4, '0')}</div>
                         <div className="transmission-meta">
-                          <span>MESSAGE FROM MARS</span>
+                          <span>MESSAGE TO VOYAGER 1</span>
                           <time>{formatIST(item.created_at, { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })} IST</time>
                         </div>
                         <p className={!isExpanded && isLong ? 'clamped' : ''}>“{item.message}”</p>
