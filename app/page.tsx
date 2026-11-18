@@ -410,13 +410,15 @@ export default function Home() {
                     <article className="transmission" key={item.id}>
                       <div className="profile-avatar"><MessageCircle size={17} strokeWidth={1.8} /></div>
                       <div className="transmission-body">
-                        <div className="signal-number">TRANSMISSION {String(contributions.length - index).padStart(4, '0')}</div>
-                        <div className="transmission-meta">
-                          <time>{formatIST(item.created_at, { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })} IST</time>
-                        </div>
                         <p className={!isExpanded && isLong ? 'clamped' : ''}>“{item.message}”</p>
                         {isLong && <button className="expand-message" onClick={() => setExpanded(prev => isExpanded ? prev.filter(x => x !== item.id) : [...prev, item.id])}>{isExpanded ? 'SHOW LESS' : 'READ FULL MESSAGE'}</button>}
-                        <strong>— {item.name}</strong>
+                        <div className="transmission-bottomline">
+                          <strong>— {item.name}</strong>
+                          <div className="transmission-stamp">
+                            <span className="signal-number">TRANSMISSION {String(contributions.length - index).padStart(4, '0')}</span>
+                            <time>{formatIST(item.created_at, { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })} IST</time>
+                          </div>
+                        </div>
                       </div>
                     </article>
                   );
