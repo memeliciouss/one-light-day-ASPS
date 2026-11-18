@@ -276,3 +276,60 @@
  .message-marquee-track{animation:none}
  .collective-track>span{transition:none}
 }
+
+
+/* Desktop mission-control composition: spacecraft left, activity right */
+@media(min-width:1060px){
+ .desktop-mission-layout{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(420px,.92fr);gap:16px;align-items:stretch}
+ .desktop-mission-layout>.redesign-spacecraft{align-self:stretch;min-height:0}
+ .desktop-mission-layout .redesign-spacecraft .scene-wrap{height:clamp(430px,48vw,610px);max-height:610px}
+ .mission-side-stack{display:flex;flex-direction:column;gap:16px;min-width:0}
+ .mission-side-stack>.panel{min-width:0}
+ .mission-side-stack .journey-card{flex:0 0 auto}
+ .mission-side-stack .transmission-card{flex:1 1 auto}
+ .mission-side-stack .journey-progress-block{padding:17px 18px 13px}
+ .mission-side-stack .journey-explainer{margin-top:0}
+ .mission-side-stack .message-carousel-section{padding-top:13px}
+}
+@media(max-width:1059px){
+ .desktop-mission-layout{display:flex;flex-direction:column}
+ .mission-side-stack{display:flex;flex-direction:column;gap:12px}
+}
+
+
+/* Larger, calmer typography and stronger hierarchy */
+.redesigned-workspace .side-heading{font-size:10px}
+.redesigned-workspace .nav-item{font-size:13px;padding:12px 10px;gap:11px}
+.redesigned-workspace .nav-item svg{width:18px;height:18px}
+.redesigned-workspace .eyebrow{font-size:10px}
+.redesigned-workspace .page-heading h1{font-size:clamp(26px,2.8vw,35px)}
+.redesigned-workspace .panel-head h2{font-size:13px;letter-spacing:.035em}
+.redesigned-workspace .panel-index{font-size:10px}
+.redesigned-workspace .panel-tag{font-size:9px}
+.progress-heading>div>span{font-size:10px}
+.progress-heading>div>strong{font-size:30px}
+.progress-heading>small{font-size:10px}
+.progress-foot{font-size:9px}
+.journey-explainer{font-size:11px}
+.single-prompt>span,.carousel-heading>span{font-size:9px}
+.single-prompt p{font-size:17px}
+.redesigned-form .field-label{font-size:10px}
+.redesigned-form input,.redesigned-form textarea{font-size:13px;padding:12px}
+.redesigned-form-bottom>span{font-size:9px}
+.redesigned-form-bottom .primary-button{font-size:9px}
+.message-marquee-item{width:260px;flex-basis:260px;min-height:125px;padding:14px}
+.message-marquee-item p{font-size:13px;line-height:1.55}
+.message-marquee-item span{font-size:9px}
+.carousel-heading .text-action{font-size:9px}
+.voyager-reference{border-top:0}
+.voyager-reference .progress-heading>div>span{color:var(--accent2)}
+.voyager-track{height:12px}
+@media(max-width:700px){
+ .redesigned-workspace .nav-item{font-size:13px}
+ .redesigned-workspace .panel-head h2{font-size:12px}
+ .progress-heading>div>span{font-size:9px}
+ .progress-heading>div>strong{font-size:27px}
+ .progress-heading>small,.progress-foot{font-size:8px}
+ .single-prompt p{font-size:16px}
+ .message-marquee-item{width:235px;flex-basis:235px}
+}
