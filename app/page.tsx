@@ -43,6 +43,7 @@ export default function Home() {
   const [now, setNow] = useState(Date.now());
   const [cooldownUntil, setCooldownUntil] = useState(0);
   const [activeMessageIndex, setActiveMessageIndex] = useState(0);
+  const [messageCarouselSliding, setMessageCarouselSliding] = useState(false);
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(Date.now()), 1000);
@@ -110,11 +111,17 @@ export default function Home() {
   }, [contributions]);
   useEffect(() => {
     if (shuffledMessages.length < 2) { setActiveMessageIndex(0); return; }
-    const rotation = window.setInterval(() => {
-      setActiveMessageIndex(index => (index + 1) % shuffledMessages.length);
-    }, 2500);
+    const rotation = window.setInterval(() => setMessageCarouselSliding(true), 3000);
     return () => window.clearInterval(rotation);
   }, [shuffledMessages.length]);
+  useEffect(() => {
+    if (!messageCarouselSliding || shuffledMessages.length < 2) return;
+    const finishSlide = window.setTimeout(() => {
+      setActiveMessageIndex(index => (index + 1) % shuffledMessages.length);
+      setMessageCarouselSliding(false);
+    }, 520);
+    return () => window.clearTimeout(finishSlide);
+  }, [messageCarouselSliding, shuffledMessages.length]);
   const activeMessage = shuffledMessages.length ? shuffledMessages[activeMessageIndex % shuffledMessages.length] : null;
   const filtered = useMemo(
     () => contributions.filter(c => (c.name + ' ' + c.message).toLowerCase().includes(search.toLowerCase())),
@@ -278,12 +285,12 @@ export default function Home() {
                     </div>
                     {activeMessage ? (
                       <div className="message-carousel-stage" aria-live="polite" aria-label="Rotating messages from the transmission archive">
-                        <div className="message-carousel-track">
+                        <div className={'message-carousel-track' + (messageCarouselSliding ? ' is-sliding' : '')}>
                           {[-1, 0, 1].map(offset => {
                             const index = (activeMessageIndex + offset + shuffledMessages.length) % shuffledMessages.length;
                             const item = shuffledMessages[index];
                             return (
-                              <article className={'message-marquee-item message-featured ' + (offset === 0 ? 'is-current' : 'is-peek')} key={item.id + '-' + offset}>
+                              <article className="message-marquee-item message-featured" key={item.id}>
                                 <div className="message-featured-top"><MessageCircle size={15} /><span>TRANSMISSION {String(index + 1).padStart(2, '0')} / {String(shuffledMessages.length).padStart(2, '0')}</span></div>
                                 <p>“{item.message}”</p>
                                 <span className="message-author">— {item.name}</span>
