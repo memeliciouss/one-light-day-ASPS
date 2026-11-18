@@ -427,3 +427,28 @@
 
 .mission-intro{max-width:760px;margin:8px 0 0;color:var(--muted);font:12px/1.65 var(--display);letter-spacing:.005em}
 @media(max-width:700px){.mission-intro{font-size:11px;line-height:1.55;margin-top:6px}}
+
+
+/* Calm final polish: aligned fields and no decorative glow */
+.transmission-full-row .single-prompt{margin:0 0 18px}
+.transmission-full-row .transmission-form-grid{display:grid;grid-template-columns:minmax(220px,.72fr) minmax(0,1.65fr);gap:18px;align-items:start}
+.transmission-full-row .field-label{display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:0}
+.transmission-full-row .field-label>span{display:block;min-height:14px;line-height:14px}
+.transmission-full-row .field-label input,
+.transmission-full-row .field-label textarea{display:block;width:100%;box-sizing:border-box;margin:0}
+.transmission-full-row .field-label textarea{min-height:84px;resize:vertical}
+.transmission-full-row .field-label input{height:54px}
+.transmission-full-row .field-label:has(textarea)>span{display:flex;justify-content:space-between}
+.transmission-full-row .field-label:has(textarea)>span::before{content:"";display:block}
+.signal-marker{display:none!important}
+.message-carousel-panel .message-featured,
+.message-carousel-stage .message-featured{box-shadow:none!important;filter:none!important}
+.message-carousel-panel .message-featured-top svg,
+.message-carousel-stage .message-featured-top svg{filter:none!important}
+.message-carousel-dots i.active{box-shadow:none!important}
+.voyager-track-icon{filter:none!important;opacity:1}
+.voyager-image-marker img{filter:none!important;opacity:1}
+@media(max-width:1059px){
+ .transmission-full-row .transmission-form-grid{grid-template-columns:1fr;gap:14px}
+ .transmission-full-row .field-label input{height:50px}
+}
